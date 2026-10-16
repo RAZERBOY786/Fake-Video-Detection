@@ -7,16 +7,22 @@ import { FIBER_PROPS } from '../lib/fiberTheme.js'
 const HOLD_MS = 3000
 const FADE_MS = 700
 
-// Cosmetic boot log shown while the splash is on screen.
+// Cosmetic boot log shown while the splash is on screen. `at` is the loading
+// percentage at which the line flips from pending to done.
 const BOOT_LINES = [
-  'Loading spatio-temporal model weights',
-  'Warming MobileNetV2 feature extractor',
-  'Arming forensic evidence vault',
+  { label: 'Loading spatio-temporal model weights', at: 18 },
+  { label: 'Warming MobileNetV2 feature extractor', at: 52 },
+  { label: 'Arming forensic evidence vault', at: 84 },
 ]
+
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+}
 
 export default function SplashScreen() {
   // active -> leaving (fading out) -> done (unmounted)
   const [phase, setPhase] = useState('active')
+  const [progress, setProgress] = useState(() => (prefersReducedMotion() ? 100 : 0))
 
   useEffect(() => {
     // Freeze background scrolling while the splash owns the screen.
@@ -32,9 +38,23 @@ export default function SplashScreen() {
       setPhase('done')
     }, HOLD_MS + FADE_MS)
 
+    // Drive the percentage readout from the same 3s window. With
+    // reduced-motion the initial state already reads 100%.
+    let frame = 0
+    if (!prefersReducedMotion()) {
+      const start = performance.now()
+      const tick = (now) => {
+        const ratio = Math.min(1, (now - start) / HOLD_MS)
+        setProgress(Math.round(ratio * 100))
+        if (ratio < 1) frame = requestAnimationFrame(tick)
+      }
+      frame = requestAnimationFrame(tick)
+    }
+
     return () => {
       clearTimeout(holdTimer)
       clearTimeout(doneTimer)
+      cancelAnimationFrame(frame)
       document.body.style.overflow = previousOverflow
     }
   }, [])
@@ -57,34 +77,30 @@ export default function SplashScreen() {
         <GhostFibers {...FIBER_PROPS} />
       </div>
 
-      {/* Ambient energy fields */}
-      <div className="absolute -top-24 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+      {/* Ambient energy fields, vignette and a sweeping scanline */}
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[36rem] h-[36rem] rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4cd7f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_35%,rgba(10,14,23,0.78)_100%)]"></div>
+      <div className="splash-scanline absolute inset-x-0 h-28 pointer-events-none"></div>
 
-      <div className="glass relative z-10 flex w-full max-w-xl flex-col items-center text-center rounded-[2rem] px-margin py-space-xl">
-        {/* Emblem */}
-        <div className="relative w-28 h-28 mb-space-lg flex items-center justify-center">
-          <div className="absolute inset-0 rounded-[9999px] border border-primary/20 animate-ping"></div>
-          <div
-            className="absolute inset-1 rounded-[9999px] border border-dashed border-primary/30 animate-spin"
-            style={{ animationDuration: '8s' }}
-          ></div>
-          <div
-            className="absolute inset-4 rounded-[9999px] border-t-2 border-primary animate-spin"
-            style={{ animationDuration: '1.6s' }}
-          ></div>
-          <div className="absolute inset-7 rounded-full bg-primary/15 blur-md"></div>
-          <span className="material-symbols-outlined relative z-10 text-primary text-[40px]">
-            verified_user
-          </span>
+      <div className="relative z-10 flex w-full max-w-md flex-col items-center px-margin text-center">
+        {/* Forensic core: rotating radar sweep over concentric rings */}
+        <div className="relative mb-space-lg flex h-40 w-40 items-center justify-center">
+          <div className="splash-core absolute inset-0 rounded-full bg-primary/10 blur-2xl"></div>
+          <div className="splash-sweep absolute inset-0 rounded-full"></div>
+          <div className="splash-ring absolute inset-[4%] rounded-full border border-dashed border-primary/25"></div>
+          <div className="splash-ring-rev absolute inset-[13%] rounded-full border-t-2 border-primary/70"></div>
+          <div className="absolute inset-[16%] rounded-full border border-primary/15"></div>
+          <div className="absolute inset-[27%] rounded-full border border-dashed border-primary/10"></div>
+          <div className="glass-chip absolute inset-[32%] rounded-full"></div>
+          <span className="material-symbols-outlined relative z-10 text-[46px] text-primary">verified_user</span>
         </div>
 
         {/* Wordmark */}
-        <div className="flex flex-col items-center gap-space-xs mb-space-lg">
+        <div className="flex flex-col items-center gap-space-xs">
           <span className="font-headline-lg text-headline-lg font-semibold tracking-tight text-on-surface">
             AegisScan{' '}
-            <span className="text-primary font-label-md text-label-md tracking-wider font-mono">
+            <span className="font-label-md text-label-md font-mono tracking-wider text-primary">
               // NEURAL FORENSICS
             </span>
           </span>
@@ -93,28 +109,50 @@ export default function SplashScreen() {
           </span>
         </div>
 
-        {/* 3-second determinate progress */}
-        <div className="w-full max-w-sm">
-          <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-container-high">
-            <div
-              className="splash-bar-fill h-full w-full origin-left rounded-full bg-gradient-to-r from-primary-container via-primary to-secondary"
-            ></div>
+        {/* Progress readout */}
+        <div className="mt-space-lg w-full">
+          <div className="flex items-end justify-between font-label-sm text-label-sm">
+            <span className="font-mono text-on-surface-variant uppercase tracking-widest">
+              Loading neural weights
+            </span>
+            <span className="font-headline-sm text-headline-sm font-mono tabular-nums text-primary">
+              {progress}%
+            </span>
           </div>
-          <div className="mt-space-sm flex items-center justify-between font-label-sm text-label-sm font-mono text-on-surface-variant">
-            <span className="uppercase tracking-widest">Initializing</span>
-            <span className="text-primary">Neural inference core</span>
+          <div className="glass-well mt-space-xs h-2.5 w-full overflow-hidden rounded-full p-0.5">
+            <div className="splash-bar-fill h-full origin-left rounded-full bg-gradient-to-r from-primary-container via-primary to-secondary"></div>
           </div>
         </div>
 
-        {/* Boot sequence */}
-        <div className="glass-well mt-space-lg w-full max-w-sm rounded-lg p-space-sm text-left font-label-sm text-label-sm font-mono text-on-surface-variant/80 flex flex-col gap-1">
-          {BOOT_LINES.map((line) => (
-            <div key={line} className="flex items-center gap-2">
-              <span className="text-primary animate-spin">◐</span>
-              <span>{line}</span>
-            </div>
-          ))}
+        {/* Boot log — lines check off as the percentage passes each threshold */}
+        <div className="glass mt-space-lg flex w-full flex-col gap-space-sm rounded-2xl p-space-md text-left">
+          {BOOT_LINES.map(({ label, at }) => {
+            const done = progress >= at
+            return (
+              <div
+                key={label}
+                className={`flex items-center gap-space-sm font-label-sm text-label-sm transition-opacity duration-500 ${
+                  done ? 'text-on-surface opacity-100' : 'text-on-surface-variant opacity-50'
+                }`}
+              >
+                <span
+                  className={`material-symbols-outlined text-[18px] ${done ? 'text-primary' : 'animate-spin'}`}
+                >
+                  {done ? 'check_circle' : 'progress_activity'}
+                </span>
+                <span>{label}</span>
+              </div>
+            )
+          })}
         </div>
+      </div>
+
+      {/* Footer telemetry */}
+      <div className="absolute bottom-space-lg left-0 right-0 flex items-center justify-center gap-space-sm px-margin font-label-sm text-label-sm font-mono text-on-surface-variant">
+        <span className="text-primary">●</span>
+        <span>Neural inference core</span>
+        <span className="text-outline-variant/60">|</span>
+        <span>TensorFlow 2.21 · Keras 3</span>
       </div>
     </div>
   )

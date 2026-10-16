@@ -287,7 +287,7 @@
   }
 }
 
-/* ---- Splash screen (3-second startup preloader) ---- */
+/* ---- Splash screen (3-second startup preloader) -------------------------------- */
 @keyframes aegis-splash-fill {
   from {
     transform: scaleX(0);
@@ -297,14 +297,100 @@
   }
 }
 
+@keyframes aegis-splash-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes aegis-splash-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes aegis-splash-scan {
+  0% {
+    transform: translateY(-30vh);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(115vh);
+    opacity: 0;
+  }
+}
+
+@keyframes aegis-splash-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
 /* Keep the 3000ms duration in sync with HOLD_MS in components/SplashScreen.jsx. */
 .splash-bar-fill {
   animation: aegis-splash-fill 3000ms linear forwards;
+}
+
+/* Rotating radar sweep: a conic comet arc whose centre is hidden by the core. */
+.splash-sweep {
+  background: conic-gradient(
+    from 0deg,
+    rgb(76 215 246 / 0.55) 0deg,
+    rgb(76 215 246 / 0.08) 70deg,
+    rgb(76 215 246 / 0) 130deg,
+    rgb(76 215 246 / 0) 360deg
+  );
+  animation: aegis-splash-spin 2.6s linear infinite;
+}
+
+.splash-ring {
+  animation: aegis-splash-spin 9s linear infinite;
+}
+
+.splash-ring-rev {
+  animation: aegis-splash-spin-rev 5.5s linear infinite;
+}
+
+/* Horizontal scanline that sweeps down the whole overlay. */
+.splash-scanline {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(76 215 246 / 0.14) 45%,
+    rgb(76 215 246 / 0.4) 50%,
+    rgb(76 215 246 / 0.14) 55%,
+    transparent 100%
+  );
+  animation: aegis-splash-scan 3.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.splash-core {
+  animation: aegis-splash-pulse 2.4s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .splash-bar-fill {
     animation: none !important;
     transform: scaleX(1);
+  }
+
+  .splash-sweep,
+  .splash-ring,
+  .splash-ring-rev,
+  .splash-scanline,
+  .splash-core {
+    animation: none !important;
   }
 }
