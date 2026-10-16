@@ -24,7 +24,7 @@ function shortHash(hash) {
 function StatCard({ icon, label, value, sub, tone }) {
   const toneText = tone === 'error' ? 'text-error' : tone === 'tertiary' ? 'text-tertiary' : 'text-primary'
   return (
-    <div className="relative overflow-hidden rounded-xl bg-surface-container/70 backdrop-blur-xl p-space-md shadow-md flex flex-col gap-space-xs">
+    <div className="glass relative overflow-hidden rounded-xl p-space-md flex flex-col gap-space-xs">
       <div className="flex items-center justify-between">
         <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">
           {label}
@@ -141,7 +141,7 @@ export default function Reports() {
   return (
     <div className="w-full px-margin py-space-lg flex flex-col gap-space-lg">
       {/* Breadcrumb & classification bar */}
-      <div className="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-lowest/60 backdrop-blur-md px-space-md py-space-xs rounded-xl shadow-sm">
+      <div className="glass flex flex-wrap items-center justify-between gap-space-sm px-space-md py-space-xs rounded-xl">
         <div className="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
           <span className="text-primary font-semibold font-mono">ROOT</span>
           <span>/</span>
@@ -149,7 +149,7 @@ export default function Reports() {
           <span>/</span>
           <span className="text-on-surface font-semibold font-mono">SERVER_PERSISTED_DOSSIERS</span>
         </div>
-        <span className="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold tracking-wider">
+        <span className="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded glass-chip text-primary font-label-sm text-label-sm font-semibold tracking-wider">
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
           LIVE RESULTS FROM THE FLASK BACKEND
         </span>
@@ -178,7 +178,7 @@ export default function Reports() {
 
         <div className="flex flex-wrap items-center gap-space-xs">
           <button
-            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all shadow-sm disabled:opacity-50"
+            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg glass-btn text-on-surface font-label-md text-label-md transition-all disabled:opacity-50"
             disabled={busy}
             onClick={load}
             type="button"
@@ -187,7 +187,7 @@ export default function Reports() {
             <span>Refresh vault</span>
           </button>
           <button
-            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all shadow-sm disabled:opacity-50"
+            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg glass-btn text-on-surface font-label-md text-label-md transition-all disabled:opacity-50"
             disabled={total === 0}
             onClick={handleExport}
             type="button"
@@ -196,7 +196,7 @@ export default function Reports() {
             <span>Export dossiers (JSON)</span>
           </button>
           <button
-            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-error font-label-md text-label-md transition-all shadow-sm disabled:opacity-50"
+            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg glass-btn text-error font-label-md text-label-md transition-all disabled:opacity-50"
             disabled={busy || total === 0}
             onClick={handleClear}
             type="button"
@@ -234,7 +234,7 @@ export default function Reports() {
       </div>
 
       {status === 'loading' && (
-        <div className="flex flex-col items-center justify-center gap-space-sm rounded-2xl bg-surface-container-low/70 backdrop-blur-xl p-space-xl shadow-xl">
+        <div className="glass flex flex-col items-center justify-center gap-space-sm rounded-2xl p-space-xl">
           <span className="material-symbols-outlined text-primary text-[40px] animate-spin">progress_activity</span>
           <span className="font-headline-sm text-headline-sm text-on-surface">Loading evidence vault…</span>
           <span className="font-body-sm text-body-sm text-on-surface-variant">
@@ -244,7 +244,7 @@ export default function Reports() {
       )}
 
       {status === 'ready' && total === 0 && (
-        <div className="flex flex-col items-center justify-center text-center gap-space-md rounded-2xl bg-surface-container-low/70 backdrop-blur-xl p-space-xl shadow-xl">
+        <div className="glass flex flex-col items-center justify-center text-center gap-space-md rounded-2xl p-space-xl">
           <span className="material-symbols-outlined text-primary text-[48px]">folder_open</span>
           <h2 className="font-headline-md text-headline-md text-on-surface font-semibold">No dossiers yet</h2>
           <p className="font-body-sm text-body-sm text-on-surface-variant max-w-2xl">
@@ -252,7 +252,7 @@ export default function Reports() {
             backend with its verdict, probabilities, threshold, SHA-256 and extracted frames.
           </p>
           <Link
-            className="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-bright text-primary font-label-md text-label-md transition-all shadow-md"
+            className="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg glass-btn text-primary font-label-md text-label-md transition-all"
             to="/"
           >
             <span className="material-symbols-outlined text-[18px]">arrow_back</span>
@@ -266,14 +266,14 @@ export default function Reports() {
           {/* Evidence index */}
           <div className="xl:col-span-7 flex flex-col gap-space-md">
             {/* Filters */}
-            <div className="rounded-xl bg-surface-container/90 backdrop-blur-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+            <div className="glass rounded-xl p-space-md flex flex-col gap-space-sm">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-space-sm">
                 <div className="md:col-span-8 relative flex items-center">
                   <span className="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">
                     search
                   </span>
                   <input
-                    className="w-full bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 font-mono font-body-sm text-body-sm pl-10 pr-4 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner"
+                    className="glass-well w-full text-on-surface placeholder:text-on-surface-variant/50 font-mono font-body-sm text-body-sm pl-10 pr-4 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer"
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder="Search by dossier id, filename or SHA-256…"
                     type="text"
@@ -282,7 +282,7 @@ export default function Reports() {
                 </div>
                 <div className="md:col-span-4 relative">
                   <select
-                    className="w-full bg-surface-container-lowest text-on-surface font-label-md text-label-md px-3 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer"
+                    className="glass-well w-full text-on-surface font-label-md text-label-md px-3 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer"
                     onChange={(event) => setVerdict(event.target.value)}
                     value={verdict}
                   >
@@ -323,17 +323,17 @@ export default function Reports() {
                 return (
                   <button
                     key={report.id}
-                    className={`group text-left relative p-space-md rounded-xl shadow-lg transition-all cursor-pointer ${
+                    className={`group text-left relative p-space-md rounded-xl transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-surface-container-high/90 ring-1 ring-primary/40'
-                        : 'bg-surface-container/70 hover:bg-surface-container-high/70'
+                        ? 'glass ring-1 ring-primary/40'
+                        : 'glass hover:border-primary/40'
                     }`}
                     onClick={() => setSelectedId(report.id)}
                     type="button"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
                       <div className="flex items-start gap-space-sm min-w-0">
-                        <div className="relative w-28 h-20 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0 shadow-inner flex items-center justify-center">
+                        <div className="glass-well relative w-28 h-20 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
                           {frame ? (
                             <img
                               alt={`${report.fileName} frame`}
@@ -403,7 +403,7 @@ export default function Reports() {
               })}
 
               {filtered.length === 0 && (
-                <div className="rounded-xl bg-surface-container-low/70 p-space-lg text-center font-body-sm text-body-sm text-on-surface-variant">
+                <div className="glass rounded-xl p-space-lg text-center font-body-sm text-body-sm text-on-surface-variant">
                   No dossiers match the current filters.
                 </div>
               )}
@@ -413,7 +413,7 @@ export default function Reports() {
           {/* Inspector */}
           <div className="xl:col-span-5 flex flex-col gap-space-md xl:sticky xl:top-20">
             {selected && (
-              <div className="rounded-xl bg-surface-container/95 backdrop-blur-2xl p-space-md shadow-xl flex flex-col gap-space-md">
+              <div className="glass rounded-xl p-space-md flex flex-col gap-space-md">
                 <div className="flex items-center justify-between pb-space-xs">
                   <div className="flex items-center gap-space-xs">
                     <span className="material-symbols-outlined text-primary text-[22px]">fingerprint</span>
@@ -433,7 +433,7 @@ export default function Reports() {
                   </span>
                 </div>
 
-                <div className="relative w-full aspect-video rounded-xl bg-surface-container-lowest overflow-hidden shadow-inner flex items-center justify-center">
+                <div className="glass-well relative w-full aspect-video rounded-xl overflow-hidden flex items-center justify-center">
                   {Array.isArray(selected.frames) && selected.frames.length > 0 ? (
                     <img
                       alt={`${selected.fileName} evidence frame`}
@@ -443,7 +443,7 @@ export default function Reports() {
                   ) : (
                     <span className="material-symbols-outlined text-on-surface-variant text-[40px]">movie</span>
                   )}
-                  <div className="relative z-10 mt-auto w-full flex items-center justify-between font-label-sm text-label-sm font-mono bg-surface-container-lowest/80 px-2 py-1 rounded backdrop-blur-md">
+                  <div className="relative z-10 mt-auto w-full flex items-center justify-between font-label-sm text-label-sm font-mono glass-chip px-2 py-1 rounded">
                     <span className="text-primary">VERDICT: {selected.label}</span>
                     <span className="text-on-surface-variant">
                       θ = {Number(selected.threshold ?? threshold).toFixed(2)}
@@ -460,20 +460,20 @@ export default function Reports() {
                       <span className="text-error">Synthetic</span>
                       <span className="text-error font-semibold">{Number(selected.fakeProbability).toFixed(2)}%</span>
                     </div>
-                    <div className="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+                    <div className="glass-well w-full h-1.5 rounded-full overflow-hidden">
                       <div className="bg-error h-full rounded-full" style={{ width: `${Number(selected.fakeProbability)}%` }}></div>
                     </div>
                     <div className="flex items-center justify-between font-label-sm text-label-sm font-mono">
                       <span className="text-tertiary">Authentic</span>
                       <span className="text-tertiary font-semibold">{Number(selected.realProbability).toFixed(2)}%</span>
                     </div>
-                    <div className="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+                    <div className="glass-well w-full h-1.5 rounded-full overflow-hidden">
                       <div className="bg-tertiary h-full rounded-full" style={{ width: `${Number(selected.realProbability)}%` }}></div>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-space-sm rounded-xl bg-surface-container-lowest shadow-inner flex flex-col gap-1 font-mono font-label-sm text-label-sm text-on-surface-variant">
+                <div className="glass-well p-space-sm rounded-xl flex flex-col gap-1 font-mono font-label-sm text-label-sm text-on-surface-variant">
                   <div className="flex justify-between gap-space-sm">
                     <span className="text-on-surface-variant/70 shrink-0">File</span>
                     <span className="text-on-surface truncate">{selected.fileName}</span>
@@ -503,7 +503,7 @@ export default function Reports() {
                     SHA-256 is the hash of the uploaded bytes, computed by the backend at ingest.
                   </span>
                   <button
-                    className="inline-flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface text-error font-label-sm text-label-sm transition-all disabled:opacity-50"
+                    className="inline-flex items-center gap-space-xs px-space-sm py-1 rounded glass-btn text-error font-label-sm text-label-sm transition-all disabled:opacity-50"
                     disabled={busy}
                     onClick={() => handleDelete(selected.id)}
                     type="button"

@@ -10,7 +10,7 @@ export function Header() {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.6)] border-b border-outline-variant/30">
+    <header className="fixed top-0 left-0 right-0 z-50 glass-bar border-b border-outline-variant/30">
       <div className="min-h-16 w-full px-margin flex flex-wrap items-center justify-between gap-space-sm">
         <NavLink className="flex items-center gap-space-sm" to="/">
           <div className="relative flex items-center justify-center">
@@ -39,7 +39,7 @@ export function Header() {
               className={({ isActive }) =>
                 `inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm transition-colors whitespace-nowrap ${
                   isActive
-                    ? 'bg-surface-container-high text-primary shadow-sm'
+                    ? 'glass-chip text-primary'
                     : 'text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface'
                 }`
               }
@@ -51,7 +51,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-space-sm bg-surface-container-low/70 px-space-md py-space-xs rounded-xl border border-outline-variant/20 shadow-inner">
+        <div className="hidden lg:flex items-center gap-space-sm glass-chip px-space-md py-space-xs rounded-xl">
           <span className="font-label-sm text-label-sm text-on-surface-variant font-mono">
             MODEL:
           </span>
@@ -66,7 +66,7 @@ export function Header() {
 
 export function Footer() {
   return (
-    <footer className="w-full bg-surface-container-lowest/90 border-t border-outline-variant/30 py-space-lg backdrop-blur-md">
+    <footer className="glass-bar w-full border-t border-outline-variant/30 py-space-lg">
       <div className="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-md">
         <div className="flex flex-col gap-space-xs text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-space-xs">
@@ -80,19 +80,19 @@ export function Footer() {
           </p>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-space-xs font-label-sm text-label-sm">
-          <span className="px-space-sm py-space-xs bg-surface-container-low text-primary rounded border border-primary/20">
+          <span className="glass-chip px-space-sm py-space-xs text-primary rounded border border-primary/20">
             MobileNetV2
           </span>
           <span className="text-outline-variant/60">•</span>
-          <span className="px-space-sm py-space-xs bg-surface-container-low text-secondary rounded border border-secondary/20">
+          <span className="glass-chip px-space-sm py-space-xs text-secondary rounded border border-secondary/20">
             Bidirectional LSTM
           </span>
           <span className="text-outline-variant/60">•</span>
-          <span className="px-space-sm py-space-xs bg-surface-container-low text-on-surface-variant rounded border border-outline-variant/30">
+          <span className="glass-chip px-space-sm py-space-xs text-on-surface-variant rounded border border-outline-variant/30">
             TensorFlow
           </span>
           <span className="text-outline-variant/60">•</span>
-          <span className="px-space-sm py-space-xs bg-surface-container-low text-tertiary rounded border border-tertiary/20">
+          <span className="glass-chip px-space-sm py-space-xs text-tertiary rounded border border-tertiary/20">
             Flask
           </span>
         </div>

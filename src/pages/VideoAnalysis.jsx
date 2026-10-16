@@ -130,7 +130,7 @@ export default function VideoAnalysis() {
 
         {/* HERO */}
         <header className="relative z-10 flex flex-col gap-space-md mb-space-xl">
-          <div className="inline-flex w-max items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high/80 backdrop-blur-md shadow-sm">
+          <div className="inline-flex w-max items-center gap-space-xs px-space-md py-space-xs glass-chip rounded-full">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -178,10 +178,10 @@ export default function VideoAnalysis() {
 
               {/* DROP ZONE */}
               <div
-                className={`drop-zone group relative overflow-hidden rounded-xl backdrop-blur-xl p-space-xl flex flex-col items-center justify-center text-center transition-all duration-300 shadow-xl ${
+                className={`drop-zone glass group relative overflow-hidden rounded-xl p-space-xl flex flex-col items-center justify-center text-center transition-all duration-300 ${
                   dragging
-                    ? 'bg-surface-container-highest/90'
-                    : 'bg-surface-container-low/70 hover:bg-surface-container-high/80'
+                    ? 'ring-2 ring-primary/50'
+                    : 'hover:border-primary/40'
                 }`}
                 onClick={() => inputRef.current?.click()}
                 onDragLeave={() => setDragging(false)}
@@ -194,7 +194,7 @@ export default function VideoAnalysis() {
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-primary/60 to-transparent"></div>
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4cd7f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 
-                <div className="relative mb-space-md flex items-center justify-center w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-inner group-hover:scale-105 transition-transform duration-300">
+                <div className="glass-well relative mb-space-md flex items-center justify-center w-20 h-20 rounded-2xl group-hover:scale-105 transition-transform duration-300">
                   <span className="absolute inset-0 rounded-2xl bg-primary/10 animate-pulse"></span>
                   <span className="material-symbols-outlined text-primary text-[42px] transition-colors group-hover:text-primary-fixed">
                     cloud_upload
@@ -212,7 +212,7 @@ export default function VideoAnalysis() {
                 </p>
 
                 <button
-                  className="relative inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-bright text-primary font-label-md text-label-md transition-all shadow-md hover:shadow-primary/20"
+                  className="relative inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg glass-btn text-primary font-label-md text-label-md transition-all"
                   id="browseBtn"
                   type="button"
                 >
@@ -223,7 +223,7 @@ export default function VideoAnalysis() {
 
               {/* SELECTED FILE */}
               {file && (
-                <div className="rounded-xl bg-surface-container/70 backdrop-blur-md p-space-md shadow-md flex items-center justify-between transition-all duration-300">
+                <div className="glass rounded-xl p-space-md flex items-center justify-between transition-all duration-300">
                   <div className="flex items-center gap-space-sm min-w-0">
                     <div className="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center shrink-0">
                       <span className="material-symbols-outlined text-primary text-[22px]">
@@ -274,7 +274,7 @@ export default function VideoAnalysis() {
             </form>
 
             {/* DECISION RULE (real) */}
-            <div className="rounded-xl bg-surface-container-lowest/60 p-space-md flex flex-col gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+            <div className="glass-well rounded-xl p-space-md flex flex-col gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
               <div className="flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-[16px] text-primary">rule</span>
                 <span className="uppercase tracking-wider font-semibold text-on-surface">
@@ -314,7 +314,7 @@ export default function VideoAnalysis() {
           <div className="lg:col-span-7 flex flex-col gap-space-md" ref={resultRef}>
             {/* IDLE PLACEHOLDER */}
             {status === 'idle' && (
-              <div className="rounded-2xl bg-surface-container-low/60 backdrop-blur-xl p-space-lg shadow-xl flex flex-col gap-space-md">
+              <div className="glass rounded-2xl p-space-lg flex flex-col gap-space-md">
                 <div className="flex items-center gap-space-xs">
                   <span className="material-symbols-outlined text-primary text-[20px]">
                     hub
@@ -330,7 +330,7 @@ export default function VideoAnalysis() {
                 <ol className="flex flex-col gap-space-xs font-label-sm text-label-sm">
                   {PIPELINE_STEPS.map((step, index) => (
                     <li key={step} className="flex items-center gap-space-sm">
-                      <span className="w-6 h-6 shrink-0 rounded-md bg-surface-container-high text-primary font-mono font-semibold flex items-center justify-center">
+                      <span className="glass-chip w-6 h-6 shrink-0 rounded-md text-primary font-mono font-semibold flex items-center justify-center">
                         {index + 1}
                       </span>
                       <span className="text-on-surface-variant">{step}</span>
@@ -342,7 +342,7 @@ export default function VideoAnalysis() {
 
             {/* LOADING */}
             {busy && (
-              <div className="rounded-2xl bg-surface-container-low/90 backdrop-blur-2xl p-space-xl shadow-2xl flex flex-col items-center justify-center text-center">
+              <div className="glass rounded-2xl p-space-xl flex flex-col items-center justify-center text-center">
                 <div className="relative w-32 h-32 mb-space-lg flex items-center justify-center">
                   <div className="absolute inset-0 rounded-full border border-primary/20 animate-ping"></div>
                   <div
@@ -372,7 +372,7 @@ export default function VideoAnalysis() {
                   <div className="h-full w-1/2 rounded-full bg-gradient-to-r from-primary via-primary-fixed to-tertiary animate-pulse shadow-[0_0_12px_rgba(76,215,246,0.6)]"></div>
                 </div>
 
-                <div className="mt-space-lg w-full max-w-lg bg-surface-container-lowest/80 rounded-lg p-space-sm text-left font-label-sm text-label-sm font-mono text-on-surface-variant/80 flex flex-col gap-1">
+                <div className="glass-well mt-space-lg w-full max-w-lg rounded-lg p-space-sm text-left font-label-sm text-label-sm font-mono text-on-surface-variant/80 flex flex-col gap-1">
                   {PIPELINE_STEPS.map((step) => (
                     <div key={step} className="flex items-center gap-2">
                       <span className="text-primary animate-spin">◐</span>
@@ -387,7 +387,7 @@ export default function VideoAnalysis() {
             {status === 'done' && result && (
               <div className="flex flex-col gap-space-md">
                 {/* VERDICT */}
-                <div className="relative overflow-hidden rounded-2xl bg-surface-container-low/80 backdrop-blur-xl p-space-lg shadow-2xl flex flex-col gap-space-md">
+                <div className="glass relative overflow-hidden rounded-2xl p-space-lg flex flex-col gap-space-md">
                   <div
                     className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${
                       isFake
@@ -441,7 +441,7 @@ export default function VideoAnalysis() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col items-start md:items-end justify-center bg-surface-container-lowest/70 px-space-lg py-space-sm rounded-xl">
+                    <div className="glass-well flex flex-col items-start md:items-end justify-center px-space-lg py-space-sm rounded-xl">
                       <span className="font-label-sm text-label-sm text-on-surface-variant font-mono uppercase">
                         Confidence
                       </span>
@@ -485,7 +485,7 @@ export default function VideoAnalysis() {
 
                 {/* PROBABILITIES */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                  <div className="rounded-xl bg-surface-container/70 backdrop-blur-md p-space-md shadow-lg flex flex-col gap-space-sm">
+                  <div className="glass rounded-xl p-space-md flex flex-col gap-space-sm">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-space-xs">
                         <span className="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
@@ -508,7 +508,7 @@ export default function VideoAnalysis() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl bg-surface-container/70 backdrop-blur-md p-space-md shadow-lg flex flex-col gap-space-sm">
+                  <div className="glass rounded-xl p-space-md flex flex-col gap-space-sm">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-space-xs">
                         <span className="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
@@ -533,7 +533,7 @@ export default function VideoAnalysis() {
                 </div>
 
                 {/* EXTRACTED FRAMES */}
-                <div className="rounded-xl bg-surface-container-low/60 backdrop-blur-xl p-space-md shadow-xl flex flex-col gap-space-md">
+                <div className="glass rounded-xl p-space-md flex flex-col gap-space-md">
                   <div className="flex flex-wrap items-center justify-between gap-space-xs">
                     <div className="flex items-center gap-space-xs">
                       <span className="material-symbols-outlined text-primary text-[20px]">
@@ -553,16 +553,16 @@ export default function VideoAnalysis() {
                       {frames.map((frame, index) => (
                         <div
                           key={index}
-                          className="group relative rounded-lg bg-surface-container overflow-hidden shadow-md transition-all duration-300 hover:scale-[1.02]"
+                          className="glass group relative rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02]"
                         >
-                          <div className="relative aspect-square w-full bg-surface-container-lowest overflow-hidden">
+                          <div className="glass-well relative aspect-square w-full overflow-hidden">
                             <img
                               alt={`Extracted frame ${index + 1}`}
                               className="w-full h-full object-cover transition-transform group-hover:scale-105"
                               loading="lazy"
                               src={`data:image/jpeg;base64,${frame}`}
                             />
-                            <div className="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-surface-container-lowest/90 font-label-sm text-label-sm font-mono text-primary">
+                            <div className="absolute top-2 left-2 px-1.5 py-0.5 glass-chip rounded font-label-sm text-label-sm font-mono text-primary">
                               Frame {index + 1}
                             </div>
                           </div>
@@ -581,7 +581,7 @@ export default function VideoAnalysis() {
         </div>
 
         {/* TECH STACK (real dependencies only) */}
-        <div className="relative z-10 mt-space-xl rounded-2xl bg-surface-container-lowest/70 backdrop-blur-xl p-space-lg shadow-xl flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div className="glass relative z-10 mt-space-xl rounded-2xl p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
           <div className="flex items-center gap-space-md">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
               <span className="material-symbols-outlined text-primary text-[28px]">school</span>
@@ -601,7 +601,7 @@ export default function VideoAnalysis() {
             {TECH_TAGS.map((tag) => (
               <span
                 key={tag}
-                className="px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant"
+                className="glass-chip px-space-sm py-1 rounded text-on-surface-variant"
               >
                 {tag}
               </span>

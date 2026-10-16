@@ -62,7 +62,7 @@ export default function SplashScreen() {
       <div className="absolute bottom-0 right-10 w-80 h-80 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4cd7f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 
-      <div className="relative z-10 flex flex-col items-center text-center px-margin">
+      <div className="glass relative z-10 flex w-full max-w-xl flex-col items-center text-center rounded-[2rem] px-margin py-space-xl">
         {/* Emblem */}
         <div className="relative w-28 h-28 mb-space-lg flex items-center justify-center">
           <div className="absolute inset-0 rounded-[9999px] border border-primary/20 animate-ping"></div>
@@ -107,7 +107,7 @@ export default function SplashScreen() {
         </div>
 
         {/* Boot sequence */}
-        <div className="mt-space-lg w-full max-w-sm bg-surface-container-low/80 rounded-lg p-space-sm text-left font-label-sm text-label-sm font-mono text-on-surface-variant/80 flex flex-col gap-1">
+        <div className="glass-well mt-space-lg w-full max-w-sm rounded-lg p-space-sm text-left font-label-sm text-label-sm font-mono text-on-surface-variant/80 flex flex-col gap-1">
           {BOOT_LINES.map((line) => (
             <div key={line} className="flex items-center gap-2">
               <span className="text-primary animate-spin">◐</span>

@@ -10,7 +10,7 @@ function numberWithCommas(value) {
 function FactCard({ icon, label, value, sub, tone }) {
   const toneText = tone === 'error' ? 'text-error' : tone === 'tertiary' ? 'text-tertiary' : 'text-primary'
   return (
-    <div className="relative overflow-hidden rounded-xl bg-surface-container-low p-space-md shadow-lg flex flex-col gap-space-xs">
+    <div className="glass rounded-xl p-space-md flex flex-col gap-space-xs">
       <div className="flex items-center justify-between">
         <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">
           {label}
@@ -26,7 +26,7 @@ function FactCard({ icon, label, value, sub, tone }) {
 function MetricTile({ label, value, detail, tone }) {
   const toneText = tone === 'error' ? 'text-error' : tone === 'tertiary' ? 'text-tertiary' : 'text-primary'
   return (
-    <div className="flex flex-col gap-space-xs rounded-xl bg-surface-container/70 p-space-md shadow-sm">
+    <div className="flex flex-col gap-space-xs glass rounded-xl p-space-md">
       <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">{label}</span>
       <span className={`font-headline-lg text-headline-lg font-bold font-mono ${toneText}`}>{value}</span>
       {detail && <span className="font-label-sm text-label-sm text-on-surface-variant font-mono">{detail}</span>}
@@ -101,7 +101,7 @@ export default function Benchmarks() {
     <div className="w-full px-margin py-space-lg flex flex-col gap-space-lg max-w-[1720px] mx-auto">
       <header className="flex flex-col gap-space-md">
         <div className="flex flex-wrap items-center gap-space-sm font-label-sm text-label-sm">
-          <span className="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container-high text-primary uppercase tracking-wider">
+          <span className="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full glass-chip text-primary uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
             Dataset Benchmarks
           </span>
@@ -120,7 +120,7 @@ export default function Benchmarks() {
         </p>
         <div className="flex flex-wrap items-center gap-space-xs">
           <button
-            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all shadow-sm disabled:opacity-50"
+            className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg glass-btn text-on-surface font-label-md text-label-md transition-all disabled:opacity-50"
             disabled={refreshing}
             onClick={() => load(true)}
             type="button"
@@ -139,7 +139,7 @@ export default function Benchmarks() {
       </header>
 
       {status === 'loading' && (
-        <div className="flex flex-col items-center justify-center gap-space-sm rounded-2xl bg-surface-container-low/70 backdrop-blur-xl p-space-xl shadow-xl">
+        <div className="flex flex-col items-center justify-center gap-space-sm glass rounded-2xl p-space-xl">
           <span className="material-symbols-outlined text-primary text-[40px] animate-spin">progress_activity</span>
           <span className="font-headline-sm text-headline-sm text-on-surface">Loading benchmark report…</span>
           <span className="font-body-sm text-body-sm text-on-surface-variant">
@@ -149,7 +149,7 @@ export default function Benchmarks() {
       )}
 
       {status === 'error' && (
-        <div className="rounded-xl bg-error-container/30 border border-error/40 p-space-md flex items-start gap-space-sm">
+        <div className="glass rounded-xl bg-error-container/20 border-error/40 p-space-md flex items-start gap-space-sm">
           <span className="material-symbols-outlined text-error text-[20px] shrink-0">error</span>
           <div className="flex flex-col gap-0.5">
             <span className="font-label-md text-label-md font-semibold text-error uppercase tracking-wider">
@@ -210,7 +210,7 @@ export default function Benchmarks() {
           </section>
 
           {/* Dataset status */}
-          <section className="flex flex-col gap-space-md rounded-xl bg-surface-container-low p-space-lg shadow-xl">
+          <section className="glass flex flex-col gap-space-md rounded-xl p-space-lg">
             <div className="flex flex-wrap items-center justify-between gap-space-md">
               <div className="flex flex-col">
                 <div className="flex items-center gap-space-xs">
@@ -238,7 +238,7 @@ export default function Benchmarks() {
             </div>
 
             {!dataset?.available && (
-              <div className="flex flex-col gap-space-xs rounded-xl bg-surface-container-lowest/70 p-space-md">
+              <div className="glass-well flex flex-col gap-space-xs rounded-xl p-space-md">
                 <span className="font-label-md text-label-md font-semibold text-on-surface">
                   Add labelled videos to generate real metrics
                 </span>
@@ -285,7 +285,7 @@ export default function Benchmarks() {
 
                 {/* Confusion matrix */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-space-sm">
-                  <div className="p-space-md rounded-xl bg-surface-container-lowest relative overflow-hidden">
+                  <div className="glass-well p-space-md rounded-xl relative overflow-hidden">
                     <div className="absolute inset-0 bg-primary/10"></div>
                     <div className="relative z-10 flex flex-col gap-space-xs">
                       <span className="font-label-sm text-label-sm text-primary font-mono font-semibold">
@@ -297,7 +297,7 @@ export default function Benchmarks() {
                       <span className="font-label-sm text-label-sm text-on-surface-variant">fakes caught</span>
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md">
+                  <div className="glass-well relative overflow-hidden rounded-xl p-space-md">
                     <div className="absolute inset-0 bg-error/10"></div>
                     <div className="relative z-10 flex flex-col gap-space-xs">
                       <span className="font-label-sm text-label-sm text-error font-mono font-semibold">FALSE NEGATIVE</span>
@@ -307,7 +307,7 @@ export default function Benchmarks() {
                       <span className="font-label-sm text-label-sm text-on-surface-variant">fakes missed</span>
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md">
+                  <div className="glass-well relative overflow-hidden rounded-xl p-space-md">
                     <div className="absolute inset-0 bg-secondary/10"></div>
                     <div className="relative z-10 flex flex-col gap-space-xs">
                       <span className="font-label-sm text-label-sm text-secondary font-mono font-semibold">FALSE POSITIVE</span>
@@ -317,7 +317,7 @@ export default function Benchmarks() {
                       <span className="font-label-sm text-label-sm text-on-surface-variant">real flagged fake</span>
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md">
+                  <div className="glass-well relative overflow-hidden rounded-xl p-space-md">
                     <div className="absolute inset-0 bg-tertiary/10"></div>
                     <div className="relative z-10 flex flex-col gap-space-xs">
                       <span className="font-label-sm text-label-sm text-tertiary font-mono font-semibold">TRUE NEGATIVE</span>
@@ -331,7 +331,7 @@ export default function Benchmarks() {
               </section>
 
               {/* Per-video results */}
-              <section className="flex flex-col gap-space-md rounded-xl bg-surface-container-low p-space-lg shadow-xl">
+              <section className="glass flex flex-col gap-space-md rounded-xl p-space-lg">
                 <div className="flex items-center gap-space-xs">
                   <span className="material-symbols-outlined text-primary text-[20px]">list_alt</span>
                   <h2 className="font-headline-md text-headline-md text-on-surface">Per-clip results</h2>
@@ -388,13 +388,13 @@ export default function Benchmarks() {
           )}
 
           {dataset?.available && !results && (
-            <div className="rounded-xl bg-error-container/30 border border-error/40 p-space-md font-body-sm text-body-sm text-on-surface-variant">
+            <div className="glass rounded-xl bg-error-container/20 border-error/40 p-space-md font-body-sm text-body-sm text-on-surface-variant">
               The dataset folders were found but no clip produced a usable sequence. Make sure each clip is long enough
               for 30 sampled frames and is a readable video, then recompute.
             </div>
           )}
 
-          <div className="rounded-xl bg-surface-container-lowest/60 p-space-md font-body-sm text-body-sm text-on-surface-variant">
+          <div className="glass-well rounded-xl p-space-md font-body-sm text-body-sm text-on-surface-variant">
             <strong className="text-on-surface">Note:</strong> no benchmark dataset ships with this app. The numbers
             above only appear once you supply labelled clips; they are produced by evaluating the deployed model, not
             copied from a paper. Cross-dataset figures for models the app does not run are intentionally not shown.

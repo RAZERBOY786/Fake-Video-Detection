@@ -6,7 +6,7 @@ function numberWithCommas(n) {
 
 function Section({ title, icon, children, subtitle }) {
   return (
-    <section className="flex flex-col gap-space-md rounded-2xl bg-surface-container-low/70 backdrop-blur-xl p-space-lg shadow-xl">
+    <section className="flex flex-col gap-space-md glass rounded-2xl p-space-lg">
       <div className="flex flex-col gap-space-xs">
         <div className="flex items-center gap-space-xs">
           {icon && (
@@ -31,7 +31,7 @@ function Section({ title, icon, children, subtitle }) {
 
 function LayerTable() {
   return (
-    <div className="overflow-x-auto rounded-xl border border-outline-variant/30 shadow-inner bg-surface-container/60">
+    <div className="overflow-x-auto glass rounded-xl">
       <table className="w-full min-w-[640px]">
         <thead>
           <tr className="text-left bg-surface-container-lowest/80">
@@ -108,7 +108,7 @@ export default function ModelArchitecture() {
   return (
     <div className="w-full px-margin py-space-lg flex flex-col gap-space-lg">
       <header className="flex flex-col gap-space-xs">
-        <div className="inline-flex w-max items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high/80 backdrop-blur-md shadow-sm">
+        <div className="inline-flex w-max items-center gap-space-xs px-space-md py-space-xs glass-chip rounded-full">
           <span className="material-symbols-outlined text-primary text-[18px]">polyline</span>
           <span className="font-label-sm text-label-sm text-primary uppercase tracking-widest font-mono">
             Hybrid Spatio-Temporal Pipeline
@@ -138,10 +138,10 @@ export default function ModelArchitecture() {
           {PIPELINE_STAGES.map((stage, index) => (
             <li
               key={stage.title}
-              className="flex flex-col gap-space-sm rounded-xl bg-surface-container/70 p-space-md shadow-md"
+              className="flex flex-col gap-space-sm rounded-xl glass p-space-md"
             >
               <div className="flex items-center gap-space-xs">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-surface-container-high text-primary font-mono font-semibold">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center glass-chip rounded-md text-primary font-mono font-semibold">
                   {index + 1}
                 </span>
                 <span className="material-symbols-outlined text-primary text-[20px]">
@@ -165,7 +165,7 @@ export default function ModelArchitecture() {
         title="Feature Extractor"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
-          <div className="flex flex-col gap-space-sm rounded-xl bg-surface-container/70 p-space-md">
+          <div className="flex flex-col gap-space-sm rounded-xl glass p-space-md">
             <h3 className="font-label-lg text-label-lg text-on-surface font-semibold">
               Configuration
             </h3>
@@ -196,7 +196,7 @@ export default function ModelArchitecture() {
               </div>
             </dl>
           </div>
-          <div className="flex flex-col gap-space-sm rounded-xl bg-surface-container/70 p-space-md">
+          <div className="flex flex-col gap-space-sm rounded-xl glass p-space-md">
             <h3 className="font-label-lg text-label-lg text-on-surface font-semibold">
               Notes
             </h3>
@@ -224,7 +224,7 @@ export default function ModelArchitecture() {
           {MODEL_CONFIG.map((item) => (
             <div
               key={item.label}
-              className="flex flex-col gap-space-xs rounded-xl bg-surface-container/70 p-space-md shadow-sm"
+              className="flex flex-col gap-space-xs rounded-xl glass p-space-md"
             >
               <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
                 {item.label}
@@ -244,7 +244,7 @@ export default function ModelArchitecture() {
         subtitle="Notes about visualisations/explainability mentioned in the design reference"
         title="What Is — and Is Not — Included"
       >
-        <div className="flex flex-col gap-space-sm rounded-xl bg-surface-container/70 p-space-md">
+        <div className="flex flex-col gap-space-sm rounded-xl glass p-space-md">
           <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
             This architecture page sticks to what the deployed system actually implements: Haar cascade face
             detection (via OpenCV), 30 evenly sampled frames, MobileNetV2 features, BiLSTM + Multi-Head Attention, and
