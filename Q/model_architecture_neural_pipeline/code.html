@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>AegisScan AI // Neural Forensics Suite</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#0a0e17", "on-primary-container": "#00424f", "secondary-fixed-dim": "#c0c1ff", "primary": "#4cd7f6", "surface-variant": "#31353f", "on-tertiary-fixed": "#002113", "on-error-container": "#ffdad6", "on-primary": "#003640", "on-primary-fixed": "#001f26", "surface": "#0f131c", "tertiary": "#4edea3", "primary-fixed": "#acedff", "on-secondary-container": "#b0b2ff", "secondary-fixed": "#e1e0ff", "on-error": "#690005", "surface-container-low": "#181b25", "surface-dim": "#0f131c", "on-tertiary-container": "#00452e", "secondary": "#c0c1ff", "on-tertiary-fixed-variant": "#005236", "error-container": "#93000a", "background": "#0f131c", "on-secondary": "#1000a9", "inverse-on-surface": "#2c303a", "outline": "#869397", "on-secondary-fixed-variant": "#2f2ebe", "surface-container-high": "#262a34", "error": "#ffb4ab", "surface-tint": "#4cd7f6", "surface-container-highest": "#31353f", "inverse-surface": "#dfe2ef", "primary-container": "#06b6d4", "surface-container": "#1c1f29", "outline-variant": "#3d494c", "surface-bright": "#353943", "on-primary-fixed-variant": "#004e5c", "tertiary-container": "#1bbd85", "tertiary-fixed": "#6ffbbe", "on-secondary-fixed": "#07006c", "on-background": "#dfe2ef", "secondary-container": "#3131c0", "on-surface-variant": "#bcc9cd", "on-tertiary": "#003824", "primary-fixed-dim": "#4cd7f6", "tertiary-fixed-dim": "#4edea3", "on-surface": "#dfe2ef", "inverse-primary": "#00687a" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "2.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "margin": "2rem", "space-md": "1rem", "gutter": "1.25rem", "gutter-lg": "1.75rem", "space-xs": "0.25rem", "gutter-sm": "0.75rem" }, "fontFamily": { "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Space Grotesk"], "label-lg": ["JetBrains Mono"], "label-md": ["JetBrains Mono"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["JetBrains Mono"], "headline-lg-mobile": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "display-lg": ["Space Grotesk"], "display-lg-mobile": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "headline-md": ["Space Grotesk"] }, "fontSize": { "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-lg": ["13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "label-md": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.08em", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.6)] border-b border-outline-variant/30"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="relative flex items-center justify-center"><span class="absolute -inset-1 rounded-full bg-primary/20 animate-pulse"></span><span class="material-symbols-outlined text-primary text-[22px] relative z-10">verified_user</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface">AegisScan <span class="text-primary font-label-md text-label-md tracking-wider font-mono">// NEURAL FORENSICS</span></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Forensic Integrity Suite</span></div></div><div class="hidden xl:flex items-center gap-space-sm bg-surface-container-low/70 px-space-md py-space-xs rounded-xl border border-outline-variant/20 shadow-inner"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">PyTorch / TF Online</span></div><span class="text-outline-variant/60 text-xs">|</span><div class="flex items-center gap-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">NET:</span><span class="font-label-sm text-label-sm text-secondary font-mono font-medium">MobileNetV2+LSTM</span></div><span class="text-outline-variant/60 text-xs">|</span><div class="flex items-center gap-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">LATENCY:</span><span class="font-label-sm text-label-sm text-primary font-mono font-semibold">38ms</span></div></div></div><nav class="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container/60 rounded-xl border border-outline-variant/20" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.3)]"><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="video-analysis" href="#">Video Analysis</a><a aria-current="page" class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.3)]" data-path="model-architecture" href="#">Model Architecture</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="forensic-reports" href="#">Forensic Reports</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="dataset-benchmarks" href="#">Dataset Benchmarks</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-high hover:bg-surface-bright text-primary font-label-md text-label-md rounded-lg border border-primary/30 transition-all shadow-[0_0_10px_rgba(76,215,246,0.1)] hover:shadow-[0_0_16px_rgba(76,215,246,0.25)]" data-path="api-documentation" href="#"><span class="material-symbols-outlined text-[16px]">terminal</span><span>API DOCS</span></a><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface font-semibold">WS-0972-OPS</span><span class="font-label-sm text-label-sm text-primary font-mono">SECURE CLEARANCE</span></div><div class="relative ring-1 ring-primary/40 rounded-full p-0.5"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VUOMffwj3phDDi0c4GZAfWBgRlt32wBWiwiz2-eLNiXY2BnPLCuS7W33wRuOcwi1cp_8A3_aeEzs1Fe4caTc71oq9ezr9x9OtOO5v3bDfhktIUsCw1f5PSGhJZ8AifKTi2BvSvT8rn69WOm_2s_a8RSzjXAE6Mb00tlNNIOULX45WQDkXPOuZ1NmQ66qg88UjI3wdEKvk9grmdelwD0q4ZDC9AyvcBvfo8tMbYsWNf4pZ66o2DFrdv4w"/></div></div></div></div></header><main class="w-full flex-1 pt-16 bg-surface"><div class="flex flex-col w-full">
+<div class="relative w-full overflow-hidden bg-surface-container-lowest px-margin py-space-xl">
+<div class="absolute -top-32 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none"></div>
+<div class="absolute top-12 right-10 w-[380px] h-[380px] rounded-full bg-secondary-container/20 blur-[100px] pointer-events-none"></div>
+<div class="relative z-10 w-full flex flex-col gap-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-primary">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span>AegisScan Neural Diagnostic Engine // Build 2.4.9</span>
+<span class="text-outline-variant font-mono">/</span>
+<span class="text-on-surface-variant font-mono">BE-AI-DS-CAPSTONE</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-space-xs rounded bg-surface-container-high text-tertiary font-label-sm text-label-sm">
+            ONNX Runtime v1.17.1 Active
+          </span>
+<span class="px-space-sm py-space-xs rounded bg-surface-container-high text-primary font-label-sm text-label-sm">
+            CUDA 12.2 Cores: 3,584
+          </span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-end">
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md uppercase text-secondary font-mono tracking-wider">
+            [Deepfake Detection Architecture Decomposition]
+          </span>
+<h1 class="font-display-lg text-display-lg font-bold text-on-surface tracking-tight leading-none">
+            Hybrid Spatio-Temporal <span class="text-primary">Pipeline</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+            Dual-stage neural forensic topology orchestrating lightweight spatial feature extractions with bidirectional recurrent state-spaces to pinpoint micro-temporal synthetic perturbations and GAN boundary artifacts.
+          </p>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-space-sm bg-surface-container-low/90 backdrop-blur-xl p-space-md rounded-xl shadow-xl">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant border-b border-outline-variant/30 pb-space-xs">
+<span class="text-primary font-mono font-semibold">TENSOR SHAPE CONTRACT</span>
+<span class="text-tertiary flex items-center gap-1 font-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>LIVE
+            </span>
+</div>
+<div class="font-label-md text-label-md font-mono text-on-surface flex items-center justify-between py-1">
+<span class="text-on-surface-variant">Input Sequence:</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-bold">[B, T=30, 3, 224, 224]</span>
+</div>
+<div class="font-label-md text-label-md font-mono text-on-surface flex items-center justify-between py-1">
+<span class="text-on-surface-variant">Output Density:</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-secondary font-bold">[B, 2] (Logits + Calib)</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs text-center font-label-sm text-label-sm font-mono">
+<div class="bg-surface-container p-space-xs rounded">
+<div class="text-on-surface-variant text-[9px]">COMPUTE</div>
+<div class="text-primary font-bold">4.8 GFLOPs</div>
+</div>
+<div class="bg-surface-container p-space-xs rounded">
+<div class="text-on-surface-variant text-[9px]">VRAM ALLOC</div>
+<div class="text-secondary font-bold">684.2 MB</div>
+</div>
+<div class="bg-surface-container p-space-xs rounded">
+<div class="text-on-surface-variant text-[9px]">INFERENCE</div>
+<div class="text-tertiary font-bold">38.4 ms</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full px-margin py-space-xl flex flex-col gap-space-xl">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-primary uppercase">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+<span>Flow Decomposition // Micro-Architecture Graph</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-semibold text-on-surface">End-to-End Execution Topology</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md relative">
+<div class="flex flex-col bg-surface-container-low p-space-md rounded-xl shadow-lg transition-transform hover:-translate-y-1 duration-200">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant pb-space-sm border-b border-outline-variant/30">
+<span class="text-primary font-mono">STAGE 01</span>
+<span class="px-1.5 py-0.5 rounded bg-primary/10 text-primary uppercase font-mono">Preprocessing</span>
+</div>
+<div class="py-space-md flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">MTCNN Facial Tracking</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            P-Net, R-Net, and O-Net cascaded stages isolate primary facial regions with 5-point landmark stabilization across 30 sequential frames.
+          </p>
+</div>
+<div class="mt-auto flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded font-label-sm text-label-sm font-mono text-on-surface">
+<div class="flex justify-between"><span class="text-on-surface-variant">Crop Matrix:</span><span>224 × 224 px</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Margin Scalar:</span><span>1.30 (Boundary Invariance)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Temporal Stride:</span><span>Δt = 1 frame (30fps)</span></div>
+</div>
+</div>
+<div class="flex flex-col bg-surface-container-low p-space-md rounded-xl shadow-lg transition-transform hover:-translate-y-1 duration-200">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant pb-space-sm border-b border-outline-variant/30">
+<span class="text-primary font-mono">STAGE 02</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary/10 text-secondary uppercase font-mono">Spatial Backbone</span>
+</div>
+<div class="py-space-md flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">MobileNetV2 Inverted Res</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            19 bottleneck inverted residual blocks with depthwise separable 3x3 convolutions extracts high-frequency structural blending discontinuities.
+          </p>
+</div>
+<div class="mt-auto flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded font-label-sm text-label-sm font-mono text-on-surface">
+<div class="flex justify-between"><span class="text-on-surface-variant">Initial Weights:</span><span>ImageNet1K (Fine-Tuned)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Bottleneck Vector:</span><span>1,280 dimensions</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Output Sequence:</span><span>[B, 30, 1280]</span></div>
+</div>
+</div>
+<div class="flex flex-col bg-surface-container-low p-space-md rounded-xl shadow-lg transition-transform hover:-translate-y-1 duration-200">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant pb-space-sm border-b border-outline-variant/30">
+<span class="text-primary font-mono">STAGE 03</span>
+<span class="px-1.5 py-0.5 rounded bg-tertiary/10 text-tertiary uppercase font-mono">Temporal Dynamics</span>
+</div>
+<div class="py-space-md flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Bidirectional LSTM</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Forward and reverse recurrent cell propagation captures unnatural micro-tremors, blink rate anomalies, and optical flow incoherencies over time.
+          </p>
+</div>
+<div class="mt-auto flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded font-label-sm text-label-sm font-mono text-on-surface">
+<div class="flex justify-between"><span class="text-on-surface-variant">Hidden Units:</span><span>256 (2 × 128 bidirectional)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Dropout Rate:</span><span>0.30 (Temporal regularization)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Context Slice:</span><span>Last Hidden State [B, 512]</span></div>
+</div>
+</div>
+<div class="flex flex-col bg-surface-container-low p-space-md rounded-xl shadow-lg transition-transform hover:-translate-y-1 duration-200">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant pb-space-sm border-b border-outline-variant/30">
+<span class="text-primary font-mono">STAGE 04</span>
+<span class="px-1.5 py-0.5 rounded bg-primary/10 text-primary uppercase font-mono">Inference Head</span>
+</div>
+<div class="py-space-md flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Softmax &amp; Calibration</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Dense projection layers through ReLU followed by Platt temperature scaling (T=1.42) for probabilistically calibrated authenticity certificates.
+          </p>
+</div>
+<div class="mt-auto flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded font-label-sm text-label-sm font-mono text-on-surface">
+<div class="flex justify-between"><span class="text-on-surface-variant">Dense Projections:</span><span>512 → 128 → 2</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Temperature (T):</span><span>1.420 Scalar Factor</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Classification:</span><span>Real (0) vs Synthetic (1)</span></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-8 flex flex-col bg-surface-container-low p-space-lg rounded-xl shadow-xl gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono">Detailed Model Decomposition</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Layer Tensor Registry</h3>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-space-xs rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-mono">
+              Total Parameters: 4,728,962
+            </span>
+<span class="px-space-sm py-space-xs rounded bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-mono">
+              Trainable: 3,412,866
+            </span>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-label-sm text-label-sm">
+<thead class="bg-surface-container-lowest text-on-surface-variant uppercase font-mono border-b border-outline-variant/30">
+<tr>
+<th class="py-space-sm px-space-md">Index / Layer Name</th>
+<th class="py-space-sm px-space-md">Operator Type</th>
+<th class="py-space-sm px-space-md">Input Shape</th>
+<th class="py-space-sm px-space-md">Output Shape</th>
+<th class="py-space-sm px-space-md">Params</th>
+<th class="py-space-sm px-space-md">Activation</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-mono text-on-surface">
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-primary font-semibold">00_InputSequence</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">TensorInput</td>
+<td class="py-space-sm px-space-md">[B, 30, 3, 224, 224]</td>
+<td class="py-space-sm px-space-md">[B, 30, 3, 224, 224]</td>
+<td class="py-space-sm px-space-md">0</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">Identity</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-primary font-semibold">01_TimeDistributedConv</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">Conv2D (Stride 2)</td>
+<td class="py-space-sm px-space-md">[B×30, 3, 224, 224]</td>
+<td class="py-space-sm px-space-md">[B×30, 32, 112, 112]</td>
+<td class="py-space-sm px-space-md">864</td>
+<td class="py-space-sm px-space-md text-tertiary">ReLU6 + BatchNorm</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-primary font-semibold">02_InvertedResiduals_1_7</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">InvResBlock (x7)</td>
+<td class="py-space-sm px-space-md">[B×30, 32, 112, 112]</td>
+<td class="py-space-sm px-space-md">[B×30, 64, 28, 28]</td>
+<td class="py-space-sm px-space-md">412,480</td>
+<td class="py-space-sm px-space-md text-tertiary">ReLU6 + Depthwise</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-primary font-semibold">03_InvertedResiduals_8_19</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">InvResBlock (x12)</td>
+<td class="py-space-sm px-space-md">[B×30, 64, 28, 28]</td>
+<td class="py-space-sm px-space-md">[B×30, 320, 7, 7]</td>
+<td class="py-space-sm px-space-md">1,798,656</td>
+<td class="py-space-sm px-space-md text-tertiary">ReLU6 + Bottleneck</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-primary font-semibold">04_GlobalAvgPool2D</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">AdaptiveAvgPool</td>
+<td class="py-space-sm px-space-md">[B×30, 1280, 7, 7]</td>
+<td class="py-space-sm px-space-md">[B, 30, 1280]</td>
+<td class="py-space-sm px-space-md">0</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">Reshape/Fold</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-secondary font-semibold">05_Bidirectional_LSTM</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">BiLSTM (2 Layers)</td>
+<td class="py-space-sm px-space-md">[B, 30, 1280]</td>
+<td class="py-space-sm px-space-md">[B, 512]</td>
+<td class="py-space-sm px-space-md">2,449,408</td>
+<td class="py-space-sm px-space-md text-secondary">Tanh + Sigmoid Gates</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-secondary font-semibold">06_DenseProjection</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">Linear + Dropout(0.5)</td>
+<td class="py-space-sm px-space-md">[B, 512]</td>
+<td class="py-space-sm px-space-md">[B, 128]</td>
+<td class="py-space-sm px-space-md">65,664</td>
+<td class="py-space-sm px-space-md text-tertiary">ReLU</td>
+</tr>
+<tr class="hover:bg-surface-container/60 transition-colors">
+<td class="py-space-sm px-space-md text-primary font-semibold">07_ClassificationHead</td>
+<td class="py-space-sm px-space-md text-on-surface-variant">Linear / TempScale</td>
+<td class="py-space-sm px-space-md">[B, 128]</td>
+<td class="py-space-sm px-space-md">[B, 2]</td>
+<td class="py-space-sm px-space-md">258</td>
+<td class="py-space-sm px-space-md text-primary">Softmax (T=1.42)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs border-t border-outline-variant/30 font-label-sm text-label-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified</span>
+<span>Active Checkpoint:</span>
+<code class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-mono font-semibold">mobilenetv2_bilstm_v2.4_final.pt</code>
+</div>
+<div class="text-on-surface-variant font-mono">
+            SHA256: <span class="text-on-surface">d98e72ba3f7c11a04ec...8b1e4</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="flex flex-col bg-surface-container-low p-space-lg rounded-xl shadow-xl gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono">Hyperparameters</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Execution Configuration</h3>
+<div class="flex flex-col gap-space-sm font-label-sm text-label-sm font-mono">
+<div class="flex justify-between items-center p-space-xs rounded bg-surface-container">
+<span class="text-on-surface-variant">Batch Size (B)</span>
+<span class="text-on-surface font-semibold">16 Sequences</span>
+</div>
+<div class="flex justify-between items-center p-space-xs rounded bg-surface-container">
+<span class="text-on-surface-variant">Sequence Length (T)</span>
+<span class="text-on-surface font-semibold">30 Frames (1.0s window)</span>
+</div>
+<div class="flex justify-between items-center p-space-xs rounded bg-surface-container">
+<span class="text-on-surface-variant">Optimization Target</span>
+<span class="text-tertiary font-semibold">AdamW (decay 1e-4)</span>
+</div>
+<div class="flex justify-between items-center p-space-xs rounded bg-surface-container">
+<span class="text-on-surface-variant">Initial Learning Rate</span>
+<span class="text-primary font-semibold">3e-4</span>
+</div>
+<div class="flex justify-between items-center p-space-xs rounded bg-surface-container">
+<span class="text-on-surface-variant">LR Scheduler</span>
+<span class="text-on-surface font-semibold">CosineAnnealWarmRestarts</span>
+</div>
+<div class="flex justify-between items-center p-space-xs rounded bg-surface-container">
+<span class="text-on-surface-variant">Loss Formulation</span>
+<span class="text-on-surface font-semibold">Focal Loss (γ=2.0, α=0.25)</span>
+</div>
+<div class="flex justify-between items-center p-space-xs rounded bg-surface-container">
+<span class="text-on-surface-variant">Mixed Precision</span>
+<span class="text-tertiary font-semibold">FP16 Enabled (AMP)</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col bg-surface-container-low p-space-lg rounded-xl shadow-xl gap-space-sm">
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono">Model Benchmark</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-bold text-tertiary">98.42%</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">FaceForensics++ (HQ)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Cross-tested against Celeb-DF (v2) yielding 94.18% AUC-ROC without synthetic domain re-calibration.
+          </p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-6 flex flex-col bg-surface-container-low p-space-lg rounded-xl shadow-xl gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono">Convergence Metrics</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">50-Epoch Loss Trajectory</h3>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm font-mono">
+<div class="flex items-center gap-1.5"><span class="w-3 h-1 bg-primary rounded-full"></span><span class="text-on-surface">Focal Loss</span></div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-1 bg-secondary rounded-full"></span><span class="text-on-surface-variant">Cross-Entropy</span></div>
+</div>
+</div>
+<div class="w-full h-56 bg-surface-container-lowest p-space-sm rounded-lg flex flex-col justify-end relative overflow-hidden">
+<div class="absolute inset-0 flex flex-col justify-between p-space-sm pointer-events-none opacity-20">
+<div class="border-b border-outline-variant w-full"></div>
+<div class="border-b border-outline-variant w-full"></div>
+<div class="border-b border-outline-variant w-full"></div>
+<div class="border-b border-outline-variant w-full"></div>
+</div>
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 500 180">
+<path class="text-secondary opacity-60" d="M 0 160 C 50 140, 100 80, 180 60 C 260 45, 340 38, 500 24" fill="none" stroke="currentColor" stroke-dasharray="4 4" stroke-width="2"></path>
+<path class="text-primary" d="M 0 150 C 60 110, 120 50, 200 35 C 280 25, 380 20, 500 12" fill="none" stroke="currentColor" stroke-width="2.5"></path>
+<circle class="text-primary" cx="500" cy="12" fill="currentColor" r="4"></circle>
+</svg>
+<div class="flex justify-between font-label-sm text-label-sm font-mono text-on-surface-variant pt-space-xs">
+<span>Epoch 01 (0.842)</span>
+<span>Epoch 25 (0.118)</span>
+<span class="text-primary font-bold">Epoch 50 (0.021)</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm font-mono">
+<div class="p-space-xs rounded bg-surface-container flex flex-col">
+<span class="text-on-surface-variant">Min Training Loss:</span>
+<span class="text-tertiary font-bold">0.0214</span>
+</div>
+<div class="p-space-xs rounded bg-surface-container flex flex-col">
+<span class="text-on-surface-variant">Min Validation Loss:</span>
+<span class="text-primary font-bold">0.0381</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-6 flex flex-col bg-surface-container-low p-space-lg rounded-xl shadow-xl gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-mono">Optimizer Dynamics</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Learning Rate &amp; Grad Norms</h3>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm font-mono">
+<div class="flex items-center gap-1.5"><span class="w-3 h-1 bg-tertiary rounded-full"></span><span class="text-on-surface">LR Schedule</span></div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-1 bg-error rounded-full"></span><span class="text-on-surface-variant">Grad Norm (||g||)</span></div>
+</div>
+</div>
+<div class="w-full h-56 bg-surface-container-lowest p-space-sm rounded-lg flex flex-col justify-end relative overflow-hidden">
+<div class="absolute inset-0 flex flex-col justify-between p-space-sm pointer-events-none opacity-20">
+<div class="border-b border-outline-variant w-full"></div>
+<div class="border-b border-outline-variant w-full"></div>
+<div class="border-b border-outline-variant w-full"></div>
+<div class="border-b border-outline-variant w-full"></div>
+</div>
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 500 180">
+<path class="text-tertiary" d="M 0 30 C 60 70, 100 130, 125 150 C 130 30, 180 80, 250 150 C 255 30, 320 80, 375 150 C 380 30, 440 90, 500 145" fill="none" stroke="currentColor" stroke-width="2"></path>
+<path class="text-error opacity-70" d="M 0 80 L 50 75 L 100 95 L 150 70 L 200 82 L 250 78 L 300 85 L 350 76 L 400 80 L 450 79 L 500 81" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+</svg>
+<div class="flex justify-between font-label-sm text-label-sm font-mono text-on-surface-variant pt-space-xs">
+<span>Cycle 1 (T_0=10)</span>
+<span>Cycle 2 (T_mult=1)</span>
+<span>Cycle 3 (T_mult=2)</span>
+<span class="text-tertiary font-bold">Stable Convergence</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm font-label-sm text-label-sm font-mono">
+<div class="p-space-xs rounded bg-surface-container flex flex-col">
+<span class="text-on-surface-variant">Max Grad Norm Clip:</span>
+<span class="text-on-surface font-bold">1.00 (L2-Norm)</span>
+</div>
+<div class="p-space-xs rounded bg-surface-container flex flex-col">
+<span class="text-on-surface-variant">Terminal Learning Rate:</span>
+<span class="text-tertiary font-bold">1e-6</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col bg-surface-container-low p-space-lg rounded-xl shadow-xl gap-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase font-mono">Explainable AI (XAI) Suite</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Grad-CAM Spatial &amp; Temporal Attention Map</h3>
+</div>
+<div class="px-space-sm py-space-xs rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-mono">
+          Target Layer: <span class="text-primary font-bold">features.18.conv</span> (Last Inverted Bottleneck)
+        </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="relative w-full h-44 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Facial crop frame captured from video showing standard authentic human expression with sharp features and natural skin pores, high resolution cyber forensic view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIrngfGOULQDh5la9xrqciSfpa2wEQZqPVZtTkS7Ipcy2R3jW4aTTIKE_x6gBoWEC_u_VakjFDTBFsL63E962xFiuB0lW_CAh5b9cok_7WTQv6Hm3uYPXJpjpnbG70mo6CqoDRgIHOGotGP1gNk7JwWqqmg-1ChuaD8S730nt842ZbLEqWSE3igBuI9Kr5ZfN1lrICbT623rGXPQFFHJPBccL2WwvudtOpM6A7lDlq5qo8_IcQ9mU"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded bg-surface/80 font-label-sm text-label-sm font-mono text-tertiary">
+              Frame #14 // Natural
+            </div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm pt-space-xs">
+<span class="text-on-surface font-semibold font-mono">RGB Aligned Crop</span>
+<span class="text-tertiary font-mono">Real Index: 0.96</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="relative w-full h-44 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Visual representation of Grad-CAM heatmap mapped over human facial boundary highlighting mouth and cheek synthesis artifacts in vivid cyan and red infrared hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdsf3-mXttIEpW2A419ML92Uj8VzT2IOGdNiNSWDqHCcSMGZpyNsG-ajTnYlcPtHIxRJV9scvmvREKndpTAkkvNgWJIaqPzTMIBZq9D-qLG5Pucc-gWgxiXFuCNWl53NW6hWCHDdMma3xn3fv4yWe21MjVu5M1RB3cER1ciq7Jm4sOVWXU4OaMi5f-4l3GCgEyUf8o0kyLTjqKECpPs1tXFRsPY-RzisxlyE1tnV-X7exXLxuuI9c"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded bg-surface/80 font-label-sm text-label-sm font-mono text-error">
+              Heatmap Inverted Bottleneck
+            </div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm pt-space-xs">
+<span class="text-on-surface font-semibold font-mono">Grad-CAM Activation</span>
+<span class="text-error font-mono">Weight α^c_k: +0.84</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="relative w-full h-44 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Digital forensic spectrogram and landmark tracking mesh overlaid on deepfake face displaying synthetic boundary inconsistencies and edge noise" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgq6PrDpN3nddd_O6Am1I4ofMO6MSrFjBMdzFGH7gO3Zq0EFTJpufIoU2KiJSQ7sFDe91whfAr0Bu2T5lPpEo7fUnh9yTMdJLKrrfMI-tljF0hfvt2aYdNWJlnOh6UTQNo93io8Z6lhlFdjqlMzlGckThIKmzHCwOjrhrNtkyWv6Shs8a7bT57QijV38Mh1tafAiVWOYkDY636yc3b5z4wUpyfNPYhBnn9-yAUN5lI8UFYDwGocD8"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded bg-surface/80 font-label-sm text-label-sm font-mono text-primary">
+              Multi-Spectral Edge Disparity
+            </div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm pt-space-xs">
+<span class="text-on-surface font-semibold font-mono">Residual Edge Map</span>
+<span class="text-primary font-mono">SSIM Score: 0.72</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm bg-surface-container-lowest p-space-md rounded-lg">
+<div class="flex flex-wrap items-center justify-between font-label-sm text-label-sm">
+<span class="text-primary uppercase font-mono font-semibold">Temporal Attention Weights Across 30 Frame Sequence</span>
+<span class="text-error font-mono font-semibold">Anomaly Triggered at Frame 18-22 (Blink Suppression)</span>
+</div>
+<div class="h-10 w-full flex items-end gap-1 px-1">
+<div class="w-full h-[20%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 1: 0.02"></div>
+<div class="w-full h-[22%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 2: 0.02"></div>
+<div class="w-full h-[25%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 3: 0.03"></div>
+<div class="w-full h-[28%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 4: 0.03"></div>
+<div class="w-full h-[30%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 5: 0.03"></div>
+<div class="w-full h-[27%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 6: 0.03"></div>
+<div class="w-full h-[24%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 7: 0.02"></div>
+<div class="w-full h-[29%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 8: 0.03"></div>
+<div class="w-full h-[32%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 9: 0.03"></div>
+<div class="w-full h-[35%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 10: 0.04"></div>
+<div class="w-full h-[40%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 11: 0.04"></div>
+<div class="w-full h-[42%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 12: 0.04"></div>
+<div class="w-full h-[38%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 13: 0.04"></div>
+<div class="w-full h-[36%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 14: 0.03"></div>
+<div class="w-full h-[45%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 15: 0.04"></div>
+<div class="w-full h-[55%] bg-secondary hover:bg-secondary-fixed transition-colors rounded-t" title="Frame 16: 0.06"></div>
+<div class="w-full h-[72%] bg-secondary hover:bg-secondary-fixed transition-colors rounded-t" title="Frame 17: 0.08"></div>
+<div class="w-full h-[98%] bg-error hover:bg-error-container transition-colors rounded-t" title="Frame 18: 0.19"></div>
+<div class="w-full h-[100%] bg-error hover:bg-error-container transition-colors rounded-t" title="Frame 19: 0.22"></div>
+<div class="w-full h-[95%] bg-error hover:bg-error-container transition-colors rounded-t" title="Frame 20: 0.18"></div>
+<div class="w-full h-[85%] bg-error hover:bg-error-container transition-colors rounded-t" title="Frame 21: 0.14"></div>
+<div class="w-full h-[70%] bg-secondary hover:bg-secondary-fixed transition-colors rounded-t" title="Frame 22: 0.07"></div>
+<div class="w-full h-[40%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 23: 0.04"></div>
+<div class="w-full h-[32%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 24: 0.03"></div>
+<div class="w-full h-[28%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 25: 0.03"></div>
+<div class="w-full h-[25%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 26: 0.02"></div>
+<div class="w-full h-[22%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 27: 0.02"></div>
+<div class="w-full h-[20%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 28: 0.02"></div>
+<div class="w-full h-[18%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 29: 0.01"></div>
+<div class="w-full h-[16%] bg-surface-container-high hover:bg-primary transition-colors rounded-t" title="Frame 30: 0.01"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm font-mono text-on-surface-variant">
+<span>t = 0.00s (Frame 1)</span>
+<span class="text-error font-semibold">Peak Anomaly Window: t = 0.60s – 0.73s</span>
+<span>t = 1.00s (Frame 30)</span>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest/90 border-t border-outline-variant/30 py-space-lg backdrop-blur-md"><div class="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex flex-col gap-space-xs text-center md:text-left"><div class="flex items-center justify-center md:justify-start gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">neurology</span><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">AegisScan AI Forensic Engine</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Deepfake Detection System • Bachelor of Engineering • Artificial Intelligence &amp; Data Science</p></div><div class="flex flex-wrap items-center justify-center gap-space-xs font-label-sm text-label-sm"><span class="px-space-sm py-space-xs bg-surface-container-low text-primary rounded border border-primary/20">MobileNetV2</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-secondary rounded border border-secondary/20">Spatio-temporal LSTM</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-on-surface-variant rounded border border-outline-variant/30">TensorFlow</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-tertiary rounded border border-tertiary/20">Flask</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-primary rounded border border-primary/20">WebGL</span></div></div></footer></body></html>

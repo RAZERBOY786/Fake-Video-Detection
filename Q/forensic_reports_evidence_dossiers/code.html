@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>AegisScan AI // Neural Forensics Suite</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#0a0e17", "on-primary-container": "#00424f", "secondary-fixed-dim": "#c0c1ff", "primary": "#4cd7f6", "surface-variant": "#31353f", "on-tertiary-fixed": "#002113", "on-error-container": "#ffdad6", "on-primary": "#003640", "on-primary-fixed": "#001f26", "surface": "#0f131c", "tertiary": "#4edea3", "primary-fixed": "#acedff", "on-secondary-container": "#b0b2ff", "secondary-fixed": "#e1e0ff", "on-error": "#690005", "surface-container-low": "#181b25", "surface-dim": "#0f131c", "on-tertiary-container": "#00452e", "secondary": "#c0c1ff", "on-tertiary-fixed-variant": "#005236", "error-container": "#93000a", "background": "#0f131c", "on-secondary": "#1000a9", "inverse-on-surface": "#2c303a", "outline": "#869397", "on-secondary-fixed-variant": "#2f2ebe", "surface-container-high": "#262a34", "error": "#ffb4ab", "surface-tint": "#4cd7f6", "surface-container-highest": "#31353f", "inverse-surface": "#dfe2ef", "primary-container": "#06b6d4", "surface-container": "#1c1f29", "outline-variant": "#3d494c", "surface-bright": "#353943", "on-primary-fixed-variant": "#004e5c", "tertiary-container": "#1bbd85", "tertiary-fixed": "#6ffbbe", "on-secondary-fixed": "#07006c", "on-background": "#dfe2ef", "secondary-container": "#3131c0", "on-surface-variant": "#bcc9cd", "on-tertiary": "#003824", "primary-fixed-dim": "#4cd7f6", "tertiary-fixed-dim": "#4edea3", "on-surface": "#dfe2ef", "inverse-primary": "#00687a" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "2.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "margin": "2rem", "space-md": "1rem", "gutter": "1.25rem", "gutter-lg": "1.75rem", "space-xs": "0.25rem", "gutter-sm": "0.75rem" }, "fontFamily": { "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Space Grotesk"], "label-lg": ["JetBrains Mono"], "label-md": ["JetBrains Mono"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["JetBrains Mono"], "headline-lg-mobile": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "display-lg": ["Space Grotesk"], "display-lg-mobile": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "headline-md": ["Space Grotesk"] }, "fontSize": { "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-lg": ["13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "label-md": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.08em", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.6)] border-b border-outline-variant/30"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="relative flex items-center justify-center"><span class="absolute -inset-1 rounded-full bg-primary/20 animate-pulse"></span><span class="material-symbols-outlined text-primary text-[22px] relative z-10">verified_user</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-semibold tracking-tight text-on-surface">AegisScan <span class="text-primary font-label-md text-label-md tracking-wider font-mono">// NEURAL FORENSICS</span></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Forensic Integrity Suite</span></div></div><div class="hidden xl:flex items-center gap-space-sm bg-surface-container-low/70 px-space-md py-space-xs rounded-xl border border-outline-variant/20 shadow-inner"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-semibold">PyTorch / TF Online</span></div><span class="text-outline-variant/60 text-xs">|</span><div class="flex items-center gap-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">NET:</span><span class="font-label-sm text-label-sm text-secondary font-mono font-medium">MobileNetV2+LSTM</span></div><span class="text-outline-variant/60 text-xs">|</span><div class="flex items-center gap-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">LATENCY:</span><span class="font-label-sm text-label-sm text-primary font-mono font-semibold">38ms</span></div></div></div><nav class="hidden lg:flex items-center gap-space-xs p-1 bg-surface-container/60 rounded-xl border border-outline-variant/20" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.3)]"><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="video-analysis" href="#">Video Analysis</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="model-architecture" href="#">Model Architecture</a><a aria-current="page" class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.3)]" data-path="forensic-reports" href="#">Forensic Reports</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-all" data-path="dataset-benchmarks" href="#">Dataset Benchmarks</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-high hover:bg-surface-bright text-primary font-label-md text-label-md rounded-lg border border-primary/30 transition-all shadow-[0_0_10px_rgba(76,215,246,0.1)] hover:shadow-[0_0_16px_rgba(76,215,246,0.25)]" data-path="api-documentation" href="#"><span class="material-symbols-outlined text-[16px]">terminal</span><span>API DOCS</span></a><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface font-semibold">WS-0972-OPS</span><span class="font-label-sm text-label-sm text-primary font-mono">SECURE CLEARANCE</span></div><div class="relative ring-1 ring-primary/40 rounded-full p-0.5"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VUOMffwj3phDDi0c4GZAfWBgRlt32wBWiwiz2-eLNiXY2BnPLCuS7W33wRuOcwi1cp_8A3_aeEzs1Fe4caTc71oq9ezr9x9OtOO5v3bDfhktIUsCw1f5PSGhJZ8AifKTi2BvSvT8rn69WOm_2s_a8RSzjXAE6Mb00tlNNIOULX45WQDkXPOuZ1NmQ66qg88UjI3wdEKvk9grmdelwD0q4ZDC9AyvcBvfo8tMbYsWNf4pZ66o2DFrdv4w"/></div></div></div></div></header><main class="w-full flex-1 pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Subtle ambient neural glow overlay -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="absolute top-20 -left-20 w-[420px] h-[420px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<!-- Workspace Container -->
+<div class="w-full px-margin py-space-lg flex flex-col gap-space-lg">
+<!-- Breadcrumb & Classification Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-lowest/60 backdrop-blur-md px-space-md py-space-xs rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-primary font-semibold font-mono">ROOT</span>
+<span>/</span>
+<span>EVIDENCE VAULT</span>
+<span>/</span>
+<span class="text-on-surface font-semibold font-mono">CHAIN_OF_CUSTODY_V4.1</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            CLASSIFICATION: RESTRICTED LAW-ENFORCEMENT FORENSICS
+          </span>
+<span class="hidden md:inline-flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm font-mono">
+            NODE: US-EAST-AEGIS-SEC03
+          </span>
+</div>
+</div>
+<!-- Header & Action Bar -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-error-container/40 text-error font-label-sm text-label-sm uppercase tracking-wider font-semibold">Live Audit Ingestion</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">• ISO/IEC 27037:2012 Evidentiary Compliant</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Forensic Video Audit &amp; Tamper Dossiers</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Cryptographically sealed temporal evidence dossiers, biometric artifact decomposition, and adversarial neural network attribution for deepfake authentication.
+          </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">input</span>
+<span>Bulk Ingest &amp; Hash Check</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">data_object</span>
+<span>Export CoC JSON-LD</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary-container hover:brightness-110 font-label-md text-label-md font-semibold transition-all shadow-md shadow-primary-container/20" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Generate Forensic Certificate (PKI)</span>
+</button>
+</div>
+</div>
+<!-- Telemetry Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Stat Card 1 -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl p-space-md rounded-xl shadow-md overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Total Videos Scanned</span>
+<span class="material-symbols-outlined text-primary text-[20px]">video_library</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-headline-lg text-on-surface">1,429</span>
+<span class="font-label-sm text-label-sm text-tertiary font-mono font-medium">+18 today</span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+<div class="mt-space-xs flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>Indexed Vault: 4.8 TB</span>
+<span class="text-primary font-semibold">88% Capacity</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl p-space-md rounded-xl shadow-md overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-tertiary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Tamper Verification Rate</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">model_training</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-headline-lg text-on-surface">98.4%</span>
+<span class="font-label-sm text-label-sm text-tertiary font-mono">AUC 0.992</span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 98.4%"></div>
+</div>
+<div class="mt-space-xs flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>Cross-Dataset Validation</span>
+<span class="text-tertiary font-semibold">Verified</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl p-space-md rounded-xl shadow-md overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-secondary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Cryptographic Mismatches</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">lock_clock</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-headline-lg text-on-surface">0</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">Pristine CoC</span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%"></div>
+</div>
+<div class="mt-space-xs flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>Merkle Tree Root</span>
+<span class="text-secondary font-semibold">0x74a...9df</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl p-space-md rounded-xl shadow-md overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Avg Audit Turnaround</span>
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+</div>
+<div class="mt-space-sm flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-headline-lg text-on-surface">1.4s</span>
+<span class="font-label-sm text-label-sm text-primary font-mono">Real-Time FastPath</span>
+</div>
+<div class="mt-space-xs w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 92%"></div>
+</div>
+<div class="mt-space-xs flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>TensorRT Acceleration</span>
+<span class="text-primary font-semibold">CUDA Dual A100</span>
+</div>
+</div>
+</div>
+<!-- Search, Filter & Telemetry Control Bar -->
+<div class="bg-surface-container/90 backdrop-blur-xl p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm">
+<!-- SHA-256 / File Name Search -->
+<div class="md:col-span-5 relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 font-mono font-body-sm text-body-sm pl-10 pr-4 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="Search by Evidence ID, filename, or SHA-256 hash checksum..." type="text"/>
+</div>
+<!-- Verdict Filter -->
+<div class="md:col-span-3 relative">
+<select class="w-full bg-surface-container-lowest text-on-surface font-label-md text-label-md px-3 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+<option value="all">Verdict: All Classes (1,429)</option>
+<option selected="" value="fake">Confirmed Deepfake Synthetic (412)</option>
+<option value="authentic">Pristine Authentic (968)</option>
+<option value="review">Flagged for Human Review (49)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-3 top-2.5 text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+<!-- Temporal Confidence -->
+<div class="md:col-span-2 relative">
+<select class="w-full bg-surface-container-lowest text-on-surface font-label-md text-label-md px-3 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+<option value="all">Confidence: Any</option>
+<option selected="" value="high">Temporal &gt; 90%</option>
+<option value="mid">75% - 90%</option>
+<option value="low">&lt; 75% Ambiguous</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-3 top-2.5 text-on-surface-variant text-[18px]">tune</span>
+</div>
+<!-- Container Format -->
+<div class="md:col-span-2 relative">
+<select class="w-full bg-surface-container-lowest text-on-surface font-label-md text-label-md px-3 py-2.5 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+<option value="all">Format: MP4/MKV/MOV</option>
+<option value="mp4">MPEG-4 Container (H.264/H.265)</option>
+<option value="mkv">Matroska Multimedia (MKV)</option>
+<option value="mov">Apple QuickTime (MOV)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-3 top-2.5 text-on-surface-variant text-[18px]">filter_list</span>
+</div>
+</div>
+<!-- Secondary telemetry filters / quick toggles -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="uppercase tracking-wider font-semibold text-primary">Active Filters:</span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface">Verdict: Confirmed Deepfake <button class="hover:text-primary">✕</button></span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface">Confidence &gt; 90% <button class="hover:text-primary">✕</button></span>
+<button class="text-primary hover:underline font-mono">Reset All (2)</button>
+</div>
+<div class="flex items-center gap-space-md">
+<span>Range: Last 30 Days (UTC)</span>
+<span class="font-mono text-tertiary">Live Merkle Sync: ACTIVE</span>
+</div>
+</div>
+</div>
+<!-- Main Layout: Evidence Feed Grid + Detailed Dossier Inspector Sidebar -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Case File Dossier Table / Feed (7 Columns on XL) -->
+<div class="xl:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">folder_special</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Audited Evidence Index</h2>
+<span class="px-space-xs py-0.5 bg-surface-container-high text-on-surface-variant rounded font-mono font-label-sm text-label-sm">412 cases filtered</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span>Sort by:</span>
+<button class="text-primary font-semibold hover:underline">Tamper Severity ↓</button>
+</div>
+</div>
+<!-- Dossier Cards Stack -->
+<div class="flex flex-col gap-space-sm" id="dossier-list">
+<!-- Selected Active Case Card (#EVD-2024-8841) -->
+<div class="group relative bg-surface-container-high/90 backdrop-blur-xl p-space-md rounded-xl shadow-lg transition-all cursor-pointer ring-1 ring-primary/40" onclick="selectCase('EVD-2024-8841')">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<!-- Video Snapshot Thumbnail with Detection Overlay -->
+<div class="relative w-28 h-20 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0 shadow-inner">
+<img class="w-full h-full object-cover opacity-90" data-alt="High tech forensic frame extraction showing an AI synthetic politician face surrounded by cybernetic bounding boxes, facial landmark reticles, and cyan temporal frequency indicators on dark operations background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKafd-nMXl3PnmkBL5T3WzHyPZOczG0Dabd8m9vuJt49kSzueXDeHsF09iJSXzXyJwE1Kezay1HtHj7SlnsuhIqHeda0R_NfAM6X3hlbM2XlPWP1Dx5t1fpqsdwAYF-KnBKTlFtOgxDDsr4s8CZY3merO-MP_m6jGtUoGMGojP9z3WOJrmYHgOp_Pp-Ve-FOUcIfs_0_EXKEig0ZnipgCzhtYL-BrUg83njB9hJCODX5n_6c5s96g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<span class="absolute top-1 left-1 px-1 rounded bg-error-container text-error font-mono font-label-sm text-[9px] font-bold">TAMPER</span>
+<span class="absolute bottom-1 right-1 font-mono text-on-surface font-label-sm text-[9px] bg-surface-container-lowest/80 px-1 rounded">00:42.18</span>
+</div>
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-md text-label-md font-bold text-primary font-mono tracking-wider">#EVD-2024-8841</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container/60 text-error font-label-sm text-label-sm font-semibold tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+                        CONFIRMED DEEPFAKE
+                      </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">speech_clip_presidential_02.mp4</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-mono truncate">SHA256: 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069</p>
+<div class="mt-1 flex flex-wrap items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-secondary font-mono">Archetype: Lip-Sync Synthetic + FaceSwap</span>
+<span>•</span>
+<span>Temporal Hotspot: <strong class="text-error font-mono">Frame 42 - 88</strong> (1.45s - 3.02s)</span>
+</div>
+</div>
+</div>
+<!-- Manipulation Gauge -->
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1 shrink-0">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Tamper Index</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-headline-sm font-bold text-error">98.7%</span>
+<span class="font-label-sm text-label-sm text-error font-mono">SYNTHETIC</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">MobileNetV2+LSTM</span>
+</div>
+</div>
+<!-- Temporal Severity Ribbon Micro-chart -->
+<div class="mt-space-sm pt-space-xs flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>Temporal Timeline: 00:00 - 01:14</span>
+<span class="text-error">Anomaly Climax: Frame 64 (Loss 0.012)</span>
+</div>
+<!-- Inline SVG Anomaly Timeline Heatmap -->
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 12">
+<rect class="text-tertiary/40" fill="currentColor" height="12" width="100" x="0" y="0"></rect>
+<rect class="text-tertiary" fill="currentColor" height="12" width="30" x="100" y="0"></rect>
+<rect class="text-error" fill="currentColor" height="12" width="120" x="130" y="0"></rect>
+<rect class="text-error/60" fill="currentColor" height="12" width="50" x="250" y="0"></rect>
+<rect class="text-tertiary/40" fill="currentColor" height="12" width="100" x="300" y="0"></rect>
+</svg>
+</div>
+</div>
+<!-- Interactive Action Buttons -->
+<div class="mt-space-sm flex flex-wrap items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span>Signer: <strong class="text-on-surface">Agent Forensics Lead K. Vance</strong></span>
+<span>•</span>
+<span>Timestamp: 2024-10-28 14:19:02 UTC</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface text-primary font-label-sm text-label-sm transition-all" type="button">
+                    Inspect Heatmap
+                  </button>
+<button class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface text-on-surface font-label-sm text-label-sm transition-all" type="button">
+                    Affidavit PDF
+                  </button>
+<button class="px-space-sm py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold transition-all" type="button">
+                    Active Dossier
+                  </button>
+</div>
+</div>
+</div>
+<!-- Case File 2: FaceSwap Candidate (#EVD-2024-8839) -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl hover:bg-surface-container-high/60 p-space-md rounded-xl shadow-md transition-all cursor-pointer" onclick="selectCase('EVD-2024-8839')">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<div class="relative w-28 h-20 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0 shadow-inner">
+<img class="w-full h-full object-cover opacity-80" data-alt="Forensic laboratory frame analysis showing synthetic deepfake biometric artifacts around boundary jawline and eyes with magenta neural heatmaps on black monitor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLiEpL4Q7PiAZ9Q-3JE_y82xXHjhRkZOcdeK1_dBk3svzlMMb90PrspDGsYNeFshNKVWtdogLJdeXAK_xXbcK0gree7UJeCkY9YiGh3lrw8tf4jnYDw7rn1yZ8QZqgdyJg7wvFcJQBRUXhcduqSietSsGiskVABMngDjw2qykbz_wnA3xxKsAyyZtp3iQvsrOKwt8aFdAD4Empxv_1ZecsxUpuTnhCjXjbhNod7i9BJvkJC97RdRk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<span class="absolute top-1 left-1 px-1 rounded bg-error-container text-error font-mono font-label-sm text-[9px] font-bold">TAMPER</span>
+<span class="absolute bottom-1 right-1 font-mono text-on-surface font-label-sm text-[9px] bg-surface-container-lowest/80 px-1 rounded">00:18.04</span>
+</div>
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-md text-label-md font-bold text-primary font-mono tracking-wider">#EVD-2024-8839</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container/40 text-error font-label-sm text-label-sm font-semibold tracking-wider">
+                        DIFFUSION INPAINTING DETECTED
+                      </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">financial_ceo_briefing_leaked.mkv</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-mono truncate">SHA256: 4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce</p>
+<div class="mt-1 flex flex-wrap items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-secondary font-mono">Archetype: Temporal Diffusion + Frame Interpolation</span>
+<span>•</span>
+<span>Temporal Hotspot: <strong class="text-error font-mono">Frame 110 - 194</strong></span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1 shrink-0">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Tamper Index</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-headline-sm font-bold text-error">94.2%</span>
+<span class="font-label-sm text-label-sm text-error font-mono">SYNTHETIC</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">MobileNetV2+LSTM</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>Temporal Timeline: 00:00 - 02:45</span>
+<span class="text-error">Spectral Blur Spikes</span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 12">
+<rect class="text-tertiary/40" fill="currentColor" height="12" width="180" x="0" y="0"></rect>
+<rect class="text-error" fill="currentColor" height="12" width="80" x="180" y="0"></rect>
+<rect class="text-tertiary/40" fill="currentColor" height="12" width="140" x="260" y="0"></rect>
+</svg>
+</div>
+</div>
+<div class="mt-space-sm flex flex-wrap items-center justify-between gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Audited: 2024-10-28 11:40:15 UTC</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface text-primary font-label-sm text-label-sm transition-all" type="button">Inspect Heatmap</button>
+<button class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface text-on-surface font-label-sm text-label-sm transition-all" type="button">Affidavit PDF</button>
+</div>
+</div>
+</div>
+<!-- Case File 3: Flagged Inconclusive (#EVD-2024-8835) -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl hover:bg-surface-container-high/60 p-space-md rounded-xl shadow-md transition-all cursor-pointer" onclick="selectCase('EVD-2024-8835')">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<div class="relative w-28 h-20 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0 shadow-inner">
+<img class="w-full h-full object-cover opacity-80" data-alt="Digital courtroom evidence preview of an interrogated subject video feed with technical oscilloscope waves and audio waveform spectral graphics in cyan and amber" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlpLnXvKUVA_lddo6wMHmNAC9jm_vTX-rNDo4W2S8P82-NBinpiXxWpa1AKQRAIokN-V4o20BcQQxnyG0EVBBgOf_esghXK0eLz5pnl1-matlvftS7C5fE8zkdpvuX0ezdkr78954I-OFF0PGDY2tqMwwG1EwsC0JuYEqqFHYm8c-Cd6jer96RfFcJwIFCBBD6UWCIQOSRqfqDD83cH_1z2IR0hx0rI3cYjrHaUX2cqBv4AUklpNo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<span class="absolute top-1 left-1 px-1 rounded bg-surface-container-highest text-secondary font-mono font-label-sm text-[9px] font-bold">FLAGGED</span>
+<span class="absolute bottom-1 right-1 font-mono text-on-surface font-label-sm text-[9px] bg-surface-container-lowest/80 px-1 rounded">03:11.80</span>
+</div>
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-md text-label-md font-bold text-primary font-mono tracking-wider">#EVD-2024-8835</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-container/40 text-secondary font-label-sm text-label-sm font-semibold tracking-wider">
+                        FLAGGED FOR HUMAN REVIEW
+                      </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">surveillance_cam_corridor_09.mov</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-mono truncate">SHA256: 9b2cf5518b53443a5985023fa34b07e5c54d74421b58535a96fd4543714c718b</p>
+<div class="mt-1 flex flex-wrap items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-secondary font-mono">Archetype: Compression Artifacts vs Adversarial Patch</span>
+<span>•</span>
+<span>Confidence Disparity: <strong class="text-secondary font-mono">68.2% Ambiguous</strong></span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1 shrink-0">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Tamper Index</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-headline-sm font-bold text-secondary">68.2%</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">REVIEW</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Ensemble Divergence</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>Temporal Timeline: 00:00 - 05:22</span>
+<span class="text-secondary">Low-Light Noise Compression Penalty</span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 12">
+<rect class="text-tertiary/40" fill="currentColor" height="12" width="120" x="0" y="0"></rect>
+<rect class="text-secondary" fill="currentColor" height="12" width="90" x="120" y="0"></rect>
+<rect class="text-tertiary/40" fill="currentColor" height="12" width="190" x="210" y="0"></rect>
+</svg>
+</div>
+</div>
+<div class="mt-space-sm flex flex-wrap items-center justify-between gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Assigned to: Senior Examiner Dr. A. Morales</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface text-primary font-label-sm text-label-sm transition-all" type="button">Manual Review Console</button>
+</div>
+</div>
+</div>
+<!-- Case File 4: Certified Pristine Authentic (#EVD-2024-8831) -->
+<div class="relative bg-surface-container/70 backdrop-blur-xl hover:bg-surface-container-high/60 p-space-md rounded-xl shadow-md transition-all cursor-pointer" onclick="selectCase('EVD-2024-8831')">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<div class="relative w-28 h-20 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0 shadow-inner">
+<img class="w-full h-full object-cover opacity-80" data-alt="Technical video authentication monitor displaying pristine clean human portrait with biological eye blink patterns and intact green acoustic spectrogram markers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAEfSG1qIfkaPCnSeO6V8104kcMa8w-vSMi54_KNrcblgKcSZfUguQ-9Z5t2ciUXl5WFnKY7FfFSm1TALfu4adPrQNU4Y7aVYpK1Kdk6t7eCONITBbsatLdWmlbMVbf4Uks-0lgqC6--Vtff2gjyfwfgpXbYqIPzdzhd9gP_UyaYaLJ_1VpOOlM24QLYDu8KrBKy9nWXNj3kA_BJqj9k3t9B2DleFj2j-YR98fYM8TEGX7Do41Jx4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<span class="absolute top-1 left-1 px-1 rounded bg-tertiary-container/80 text-on-tertiary-container font-mono font-label-sm text-[9px] font-bold">AUTHENTIC</span>
+<span class="absolute bottom-1 right-1 font-mono text-on-surface font-label-sm text-[9px] bg-surface-container-lowest/80 px-1 rounded">01:04.12</span>
+</div>
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-label-md text-label-md font-bold text-primary font-mono tracking-wider">#EVD-2024-8831</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                        CERTIFIED PRISTINE AUTHENTIC
+                      </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">un_general_assembly_press_raw.mp4</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-mono truncate">SHA256: 12903ea29a67cbda227efc90029b3ca0f17120a1c1d8bb66782ff79b9001bfa4</p>
+<div class="mt-1 flex flex-wrap items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="text-tertiary font-mono">Biological Blink Rate Intact (0.32 Hz)</span>
+<span>•</span>
+<span>Temporal Coherence: <strong class="text-tertiary font-mono">99.8% Coherent</strong></span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1 shrink-0">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Tamper Index</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-headline-sm font-bold text-tertiary">1.2%</span>
+<span class="font-label-sm text-label-sm text-tertiary font-mono">CLEAN</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Natural Physiology</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span>Temporal Timeline: 00:00 - 01:04</span>
+<span class="text-tertiary">Zero Splicing or Spectral Ringing</span>
+</div>
+<div class="w-full h-3 rounded bg-surface-container-lowest overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 400 12">
+<rect class="text-tertiary/60" fill="currentColor" height="12" width="400" x="0" y="0"></rect>
+</svg>
+</div>
+</div>
+<div class="mt-space-sm flex flex-wrap items-center justify-between gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Audited: 2024-10-27 22:15:40 UTC</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded bg-surface-container-low hover:bg-surface text-primary font-label-sm text-label-sm transition-all" type="button">Download Certificate</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination Telemetry -->
+<div class="flex items-center justify-between bg-surface-container-low/70 px-space-md py-space-xs rounded-xl font-label-sm text-label-sm text-on-surface-variant">
+<span>Showing <strong class="text-on-surface font-mono">1 - 4</strong> of 412 Records</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-2 py-1 rounded bg-surface-container-high text-on-surface hover:bg-surface-bright disabled:opacity-40" disabled="">Previous</button>
+<span class="font-mono text-primary px-2 font-semibold">1 / 103</span>
+<button class="px-2 py-1 rounded bg-surface-container-high text-on-surface hover:bg-surface-bright">Next</button>
+</div>
+</div>
+</div>
+<!-- Detailed Evidence Inspector Sidebar / Drawer Preview (5 Columns on XL) -->
+<div class="xl:col-span-5 flex flex-col gap-space-md sticky top-20">
+<!-- Primary Case File Inspector Card -->
+<div class="bg-surface-container/95 backdrop-blur-2xl rounded-xl p-space-md shadow-xl flex flex-col gap-space-md">
+<!-- Inspector Header -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">csv</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Telemetry Inspector</h3>
+<span class="font-label-sm text-label-sm text-primary font-mono font-semibold">CASE: #EVD-2024-8841</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-error font-label-sm text-label-sm font-mono font-bold">
+                TAMPER CONFIRMED
+              </span>
+</div>
+<!-- Focus Frame Diagnostic Visualizer with Synthetic Anomaly Heatmap -->
+<div class="relative w-full aspect-video rounded-xl bg-surface-container-lowest overflow-hidden shadow-inner flex flex-col justify-between p-space-xs">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="Close up biometric neural forensics wireframe of facial synthesis boundary artifacts, highlighting mouth region lip sync desynchronization and synthetic eye blink frequency on deep dark blue UI screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSQpcw8_QOu4tG5IQMXnqOMsrPeUkTvhNrk-6_jtU1BI-tZ3Q9P4DSvIGUsT6VAMTY9FifJqvxURC__tYBIPk7uo6AhQqM545CdJe0BL8aCMRZKhDvif8rKz5hMC8ecq48RlAFEBf3VDH0J6nc3wbGtkGB8jGTh3-9uaonpFqEUr01fwyYIyvO6hOiDEZ8ZGQRhF-dDECyJhdJk_3HlvReJzZejEI4OGXoQe3iQ-hdTbqMbceqtlE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-surface-container-lowest/60"></div>
+<!-- Bounding Box Annotation Visual Overlay -->
+<div class="absolute top-[28%] left-[34%] w-[32%] h-[44%] rounded border border-error/80 bg-error/10 pointer-events-none flex flex-col justify-between p-1 shadow-[0_0_12px_rgba(239,68,68,0.4)]">
+<span class="font-mono font-label-sm text-[8px] text-error font-bold tracking-tight bg-surface-container-lowest/90 px-1 py-0.5 rounded w-max">LIP_SYNC_FAIL // +84ms</span>
+<span class="font-mono font-label-sm text-[8px] text-error font-bold tracking-tight bg-surface-container-lowest/90 px-1 py-0.5 rounded w-max self-end">BLUR_DISCONTINUITY</span>
+</div>
+<!-- Reticle Top Info -->
+<div class="relative z-10 flex items-center justify-between font-label-sm text-label-sm text-primary font-mono bg-surface-container-lowest/80 px-2 py-1 rounded backdrop-blur-md">
+<span>CANVAS: 1920x1080 @ 29.97fps</span>
+<span>INSPECT FRAME: #0064</span>
+</div>
+<!-- Reticle Bottom Metrics -->
+<div class="relative z-10 flex items-center justify-between font-label-sm text-label-sm font-mono bg-surface-container-lowest/80 px-2 py-1 rounded backdrop-blur-md">
+<span class="text-error font-semibold">ATTRIBUTION: Wav2Lip + StyleGAN3</span>
+<span class="text-on-surface-variant">GRAD-CAM ACTIVATION: 0.964</span>
+</div>
+</div>
+<!-- Biometric Anomaly Breakdown Cards -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">
+                Biometric Anomaly Breakdown
+              </span>
+<!-- Anomaly 1: Blink Frequency -->
+<div class="p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-error text-[16px]">visibility_off</span>
+                    Eye Blink Frequency Disparity
+                  </span>
+<span class="font-mono font-label-sm text-label-sm text-error font-bold">CRITICAL VIOLATION</span>
+</div>
+<div class="flex justify-between items-baseline font-mono font-label-sm text-label-sm text-on-surface-variant">
+<span>Detected: <strong class="text-error">0.04 Hz</strong> (Unnatural freeze)</span>
+<span>Human Baseline: <strong>0.28 - 0.38 Hz</strong></span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<!-- Anomaly 2: Spectral FFT Boundary -->
+<div class="p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-error text-[16px]">graphic_eq</span>
+                    Spectral FFT Boundary Mismatch
+                  </span>
+<span class="font-mono font-label-sm text-label-sm text-error font-bold">HIGH FREQ RINGING</span>
+</div>
+<div class="flex justify-between items-baseline font-mono font-label-sm text-label-sm text-on-surface-variant">
+<span>Nyquist Discontinuity: <strong class="text-error">+14.2 dB</strong></span>
+<span>Spatial Resampling Artifacts</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 86%"></div>
+</div>
+</div>
+<!-- Anomaly 3: Phono-Visual Desynchronization -->
+<div class="p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-error text-[16px]">mic_off</span>
+                    Phono-Visual Lip Desynchronization
+                  </span>
+<span class="font-mono font-label-sm text-label-sm text-error font-bold">84ms LAG SPIKE</span>
+</div>
+<div class="flex justify-between items-baseline font-mono font-label-sm text-label-sm text-on-surface-variant">
+<span>Phoneme-to-Viseme Align: <strong class="text-error">0.41 Pearson</strong></span>
+<span>Expected: &gt; 0.88</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+<!-- Cryptographic Integrity Seal & PKI Ledger Anchor -->
+<div class="p-space-sm rounded-xl bg-surface-container-lowest shadow-inner flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase font-semibold text-tertiary tracking-wider">Cryptographic Integrity Seal</span>
+</div>
+<span class="font-mono font-label-sm text-[10px] text-on-surface-variant">Ed25519 VERIFIED</span>
+</div>
+<div class="flex flex-col gap-0.5 font-mono font-label-sm text-[11px] text-on-surface-variant">
+<div class="flex justify-between">
+<span class="text-on-surface-variant/70">PKI Public Key:</span>
+<span class="text-on-surface truncate ml-2">ed25519:6c40a5e8f49a17...3d209f</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant/70">Signed Checksum:</span>
+<span class="text-primary truncate ml-2">sha256:7f83b1657ff1fc53...126d9069</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant/70">Ledger Block:</span>
+<span class="text-secondary">#19,842,901 (Ethereum Attestation Service)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant/70">UTC Timestamp:</span>
+<span class="text-on-surface">2024-10-28T14:19:02.844Z</span>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<button class="w-full py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-primary font-label-sm text-label-sm font-semibold flex items-center justify-center gap-space-xs transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Download Verified Forensic Affidavit (PDF/A-3b)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Compliance & Legal Admissibility Card -->
+<div class="bg-surface-container/90 backdrop-blur-xl rounded-xl p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">gavel</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Legal Admissibility Protocol</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Every dossier generated complies with statutory courtroom standards for electronic evidence authentication and forensic reproducible science.
+            </p>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<!-- Item 1 -->
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">FRE Rule 901 &amp; 902(13)/(14) Certified</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Self-authenticating records generated by electronic process with mathematical hash proof.</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Daubert Standard Validation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Known error rates (0.016 false positive threshold) and peer-reviewed spatial-temporal LSTM methodology.</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Immutable Audit Logging</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Append-only operator telemetry tracking all inspection interactions, parameter changes, and exports.</span>
+</div>
+</div>
+</div>
+<div class="mt-space-xs p-space-xs rounded bg-surface-container-low font-mono font-label-sm text-label-sm text-on-surface-variant/80 flex items-center justify-between">
+<span>Jurisdiction: Federal &amp; High Court</span>
+<span class="text-primary font-semibold">ISO 17025 Ready</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function selectCase(evidenceId) {
+    // Interactive case file switcher feedback
+    console.log("Selected forensic dossier: " + evidenceId);
+  }
+</script></main><footer class="w-full bg-surface-container-lowest/90 border-t border-outline-variant/30 py-space-lg backdrop-blur-md"><div class="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex flex-col gap-space-xs text-center md:text-left"><div class="flex items-center justify-center md:justify-start gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">neurology</span><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">AegisScan AI Forensic Engine</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Deepfake Detection System • Bachelor of Engineering • Artificial Intelligence &amp; Data Science</p></div><div class="flex flex-wrap items-center justify-center gap-space-xs font-label-sm text-label-sm"><span class="px-space-sm py-space-xs bg-surface-container-low text-primary rounded border border-primary/20">MobileNetV2</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-secondary rounded border border-secondary/20">Spatio-temporal LSTM</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-on-surface-variant rounded border border-outline-variant/30">TensorFlow</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-tertiary rounded border border-tertiary/20">Flask</span><span class="text-outline-variant/60">•</span><span class="px-space-sm py-space-xs bg-surface-container-low text-primary rounded border border-primary/20">WebGL</span></div></div></footer></body></html>
