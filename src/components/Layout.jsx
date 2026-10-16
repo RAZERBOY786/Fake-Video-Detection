@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import GhostBackground from './GhostBackground.jsx'
 
 export function Header() {
   const navItems = [
@@ -103,8 +104,9 @@ export function Footer() {
 export default function Layout() {
   return (
     <>
+      <GhostBackground />
       <Header />
-      <main className="w-full flex-1 pt-16 bg-surface">
+      <main className="w-full flex-1 pt-16">
         <Outlet />
       </main>
       <Footer />

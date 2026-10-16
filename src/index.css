@@ -190,3 +190,25 @@
       'opsz' 24;
   }
 }
+
+/* ---- Splash screen (3-second startup preloader) ---- */
+@keyframes aegis-splash-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Keep the 3000ms duration in sync with HOLD_MS in components/SplashScreen.jsx. */
+.splash-bar-fill {
+  animation: aegis-splash-fill 3000ms linear forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-bar-fill {
+    animation: none !important;
+    transform: scaleX(1);
+  }
+}

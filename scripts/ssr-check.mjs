@@ -25,6 +25,8 @@ const PAGES = {
 
 const CHROME = ['AegisScan', 'Deepfake Detection System', 'MobileNetV2', 'Bidirectional LSTM']
 
+const SPLASH = ['AegisScan', 'NEURAL FORENSICS', 'Neural inference core', 'Forensic Integrity Suite']
+
 const server = await createServer({
   server: { middlewareMode: true },
   appType: 'custom',
@@ -65,6 +67,19 @@ try {
 } catch (error) {
   ok = false
   console.error('Layout: FAILED\n', error)
+}
+
+try {
+  const splash = await server.ssrLoadModule('/src/components/SplashScreen.jsx')
+  const html = renderToString(React.createElement(splash.default))
+  const missing = SPLASH.filter((s) => !html.includes(s))
+  if (missing.length) ok = false
+  console.log(
+    `SplashScreen: rendered ${html.length} chars ${missing.length ? 'MISSING: ' + missing.join(', ') : 'OK'}`,
+  )
+} catch (error) {
+  ok = false
+  console.error('SplashScreen: FAILED\n', error)
 }
 
 await server.close()
